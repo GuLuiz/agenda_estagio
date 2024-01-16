@@ -10,19 +10,19 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@Entity(name = "diaSemana")
-@Table(name = "TB_DIA_SEMANA")
-public class DiaSemanaEntity implements Serializable {
+@Table(name = "TB_MENU")
+@Entity(name = "menu")
+public class MenuEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private int id;
-    private String name;
-   
-    public DiaSemanaEntity(int id, String name) {
+    private String nome;
+    
+    public MenuEntity(int id, String nome) {
         this.id = id;
-        this.name = name;
+        this.nome = nome;
     }
 
     @Override
@@ -33,7 +33,7 @@ public class DiaSemanaEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DiaSemanaEntity other = (DiaSemanaEntity) obj;
+        MenuEntity other = (MenuEntity) obj;
         if (id != other.id)
             return false;
         return true;

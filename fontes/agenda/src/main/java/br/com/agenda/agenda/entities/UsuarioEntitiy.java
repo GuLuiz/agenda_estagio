@@ -27,7 +27,7 @@ public class UsuarioEntitiy implements Serializable {
     
     @Email
     private String email;
-    @Length(min = 10, max = 100, message = "A senha deve conter entre 10 a 100 caracteres")
+    @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres")
     private String senha;
     private String Logradouro;
     private int numero;

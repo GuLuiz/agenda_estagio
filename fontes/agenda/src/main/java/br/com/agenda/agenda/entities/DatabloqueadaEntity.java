@@ -1,6 +1,8 @@
 package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,19 +12,27 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@Entity(name = "diaSemana")
-@Table(name = "TB_DIA_SEMANA")
-public class DiaSemanaEntity implements Serializable {
+@Entity(name = "dataBloqueada")
+@Table(name = "TB_DATA_BLOQUEADA")
+public class DatabloqueadaEntity implements Serializable{
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private int id;
-    private String name;
+    
+    private Date data;
+    private LocalDateTime horario_inicio;
+    private LocalDateTime horario_final;
+    private int funcinario_id;
    
-    public DiaSemanaEntity(int id, String name) {
+    public DatabloqueadaEntity(int id, Date data, LocalDateTime horario_inicio, LocalDateTime horario_final,
+            int funcinario_id) {
         this.id = id;
-        this.name = name;
+        this.data = data;
+        this.horario_inicio = horario_inicio;
+        this.horario_final = horario_final;
+        this.funcinario_id = funcinario_id;
     }
 
     @Override
@@ -33,7 +43,7 @@ public class DiaSemanaEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DiaSemanaEntity other = (DiaSemanaEntity) obj;
+        DatabloqueadaEntity other = (DatabloqueadaEntity) obj;
         if (id != other.id)
             return false;
         return true;

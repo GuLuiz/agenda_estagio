@@ -1,6 +1,7 @@
 package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -13,9 +14,9 @@ import jakarta.validation.constraints.Email;
 import lombok.Data;
 
 @Data
-@Entity(name = "funcionario")
-@Table(name = "TB_FUNCIONARIO")
-public class FuncionarioEntity implements Serializable {
+@Entity(name = "cliente")
+@Table(name = "TB_CLIENTE")
+public class ClienteEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -25,22 +26,36 @@ public class FuncionarioEntity implements Serializable {
     private int telefone;
     @Email
     private String email;
+
     @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres")
     private String senha;
-    private int foto_id;
-    private int empresa_id;
+
+    private Date data_nascimento;
+    private String descricao;
     private boolean ativo;
     
-    public FuncionarioEntity(int id, String nome, int telefone, @Email String email,
+    public ClienteEntity(int id, String nome, int telefone, @Email String email,
             @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres") String senha,
-            int foto_id, int empresa_id, boolean ativo) {
+            Date data_nascimento, boolean ativo) {
         this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.senha = senha;
-        this.foto_id = foto_id;
-        this.empresa_id = empresa_id;
+        this.data_nascimento = data_nascimento;
+        this.ativo = ativo;
+    }
+
+    public ClienteEntity(int id, String nome, int telefone, @Email String email,
+            @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres") String senha,
+            Date data_nascimento, String descricao, boolean ativo) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+        this.senha = senha;
+        this.data_nascimento = data_nascimento;
+        this.descricao = descricao;
         this.ativo = ativo;
     }
 
@@ -52,7 +67,7 @@ public class FuncionarioEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        FuncionarioEntity other = (FuncionarioEntity) obj;
+        ClienteEntity other = (ClienteEntity) obj;
         if (id != other.id)
             return false;
         return true;
@@ -65,8 +80,8 @@ public class FuncionarioEntity implements Serializable {
         result = prime * result + id;
         return result;
     }
-    
-    
 
+    
+    
     
 }

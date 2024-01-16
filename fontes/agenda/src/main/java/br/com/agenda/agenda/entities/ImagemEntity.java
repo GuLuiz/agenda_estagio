@@ -2,6 +2,8 @@ package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
 
+import javax.swing.ImageIcon;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,20 +11,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+@Entity(name = "imagem")
 @Data
-@Entity(name = "diaSemana")
-@Table(name = "TB_DIA_SEMANA")
-public class DiaSemanaEntity implements Serializable {
+@Table(name = "TB_IMAGEM")
+public class ImagemEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private int id;
-    private String name;
-   
-    public DiaSemanaEntity(int id, String name) {
+    private ImageIcon imagem;
+    
+    public ImagemEntity(int id, ImageIcon imagem) {
         this.id = id;
-        this.name = name;
+        this.imagem = imagem;
     }
 
     @Override
@@ -33,7 +35,7 @@ public class DiaSemanaEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DiaSemanaEntity other = (DiaSemanaEntity) obj;
+        ImagemEntity other = (ImagemEntity) obj;
         if (id != other.id)
             return false;
         return true;
@@ -48,5 +50,5 @@ public class DiaSemanaEntity implements Serializable {
     }
 
     
-    
+
 }

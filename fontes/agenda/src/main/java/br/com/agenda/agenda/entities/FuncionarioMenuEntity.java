@@ -10,21 +10,23 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@Entity(name = "diaSemana")
-@Table(name = "TB_DIA_SEMANA")
-public class DiaSemanaEntity implements Serializable {
+@Entity(name = "funcionarioMenu")
+@Table(name = "TB_FUNCIONARIO_MENU")
+public class FuncionarioMenuEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private int id;
-    private String name;
+    
+    private int menu_id;
+    private int funcionario_id;
    
-    public DiaSemanaEntity(int id, String name) {
+    public FuncionarioMenuEntity(int id, int menu_id, int funcionario_id) {
         this.id = id;
-        this.name = name;
+        this.menu_id = menu_id;
+        this.funcionario_id = funcionario_id;
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -33,12 +35,11 @@ public class DiaSemanaEntity implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        DiaSemanaEntity other = (DiaSemanaEntity) obj;
+        FuncionarioMenuEntity other = (FuncionarioMenuEntity) obj;
         if (id != other.id)
             return false;
         return true;
     }
-
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -48,5 +49,6 @@ public class DiaSemanaEntity implements Serializable {
     }
 
     
+
     
 }
