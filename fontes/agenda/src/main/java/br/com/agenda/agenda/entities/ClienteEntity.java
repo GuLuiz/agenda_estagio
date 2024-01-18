@@ -14,16 +14,19 @@ import jakarta.validation.constraints.Email;
 import lombok.Data;
 
 @Data
-@Entity(name = "cliente")
-@Table(name = "TB_CLIENTE")
+@Entity
+@Table(name = "CLIENTE")
 public class ClienteEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Length(max = 100, message = "Limite de 100 caracteres excedido")
     private String nome;
-    private int telefone;
+    @Length(max = 19, message = "O campo deve conter até 19 dígitos")
+    private String telefone;
+    @Length(max = 100, message = "Limite de 100 caracteres excedido")
     @Email
     private String email;
 
@@ -31,57 +34,8 @@ public class ClienteEntity implements Serializable{
     private String senha;
 
     private Date data_nascimento;
+    @Length(max = 100, message = "Limite de 100 caracteres excedido")
     private String descricao;
     private boolean ativo;
-    
-    public ClienteEntity(int id, String nome, int telefone, @Email String email,
-            @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres") String senha,
-            Date data_nascimento, boolean ativo) {
-        this.id = id;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.senha = senha;
-        this.data_nascimento = data_nascimento;
-        this.ativo = ativo;
-    }
 
-    public ClienteEntity(int id, String nome, int telefone, @Email String email,
-            @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres") String senha,
-            Date data_nascimento, String descricao, boolean ativo) {
-        this.id = id;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.senha = senha;
-        this.data_nascimento = data_nascimento;
-        this.descricao = descricao;
-        this.ativo = ativo;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        ClienteEntity other = (ClienteEntity) obj;
-        if (id != other.id)
-            return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        return result;
-    }
-
-    
-    
-    
 }

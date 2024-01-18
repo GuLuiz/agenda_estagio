@@ -13,60 +13,25 @@ import jakarta.validation.constraints.Email;
 import lombok.Data;
 
 @Data
-@Entity(name = "funcionario")
-@Table(name = "TB_FUNCIONARIO")
+@Entity
+@Table(name = "FUNCIONARIO")
 public class FuncionarioEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Length(max = 100, message = "Limite de 100 caracteres excedido")
     private String nome;
-    private int telefone;
+    @Length(max = 19, message = "O cep deve conter até 19 dígitos")
+    private String telefone;
+    @Length(max = 100, message = "Limite de 100 caracteres excedido")
     @Email
     private String email;
-    @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres")
+    @Length(min = 6, max = 30, message = "A senha deve conter entre 6 a 30 caracteres")
     private String senha;
-    private int foto_id;
-    private int empresa_id;
-    private boolean ativo;
-    
-    public FuncionarioEntity(int id, String nome, int telefone, @Email String email,
-            @Length(min = 8, max = 100, message = "A senha deve conter entre 8 a 100 caracteres") String senha,
-            int foto_id, int empresa_id, boolean ativo) {
-        this.id = id;
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-        this.senha = senha;
-        this.foto_id = foto_id;
-        this.empresa_id = empresa_id;
-        this.ativo = ativo;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        FuncionarioEntity other = (FuncionarioEntity) obj;
-        if (id != other.id)
-            return false;
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + id;
-        return result;
-    }
-    
-    
-
+    private Integer foto_id;
+    private Integer empresa_id;
+    private Boolean ativo;
     
 }
