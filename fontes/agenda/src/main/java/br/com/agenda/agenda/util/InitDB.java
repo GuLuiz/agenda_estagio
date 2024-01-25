@@ -1,19 +1,27 @@
 package br.com.agenda.agenda.util;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import br.com.agenda.agenda.entities.ClienteEntity;
 import br.com.agenda.agenda.entities.UsuarioEntity;
+import br.com.agenda.agenda.repositories.ClienteRepository;
 import br.com.agenda.agenda.repositories.UsuarioRepository;
 
 @Component
-public class InitDB  implements CommandLineRunner{
+public class InitDB implements CommandLineRunner {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    public void inserirRegistros(){
+    @Autowired
+    ClienteRepository clienteRepository;
+
+    public void inserirRegistros() {
         System.out.println("Inserindo registros");
 
         UsuarioEntity usuarioEntity1 = new UsuarioEntity();
@@ -30,7 +38,7 @@ public class InitDB  implements CommandLineRunner{
         usuarioEntity1.setSenha("123456");
         usuarioEntity1.setTelefone("(12) 98139-4021");
         usuarioEntity1.setUf("SP");
-        
+
         UsuarioEntity usuarioEntity2 = new UsuarioEntity();
 
         usuarioEntity2.setId(0);
@@ -50,13 +58,32 @@ public class InitDB  implements CommandLineRunner{
         usuarioRepository.save(usuarioEntity1);
         usuarioRepository.save(usuarioEntity2);
 
+        ClienteEntity clienteEntity1 = new ClienteEntity();
+
+        clienteEntity1.setAtivo(true);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        try {
+            java.util.Date dataNascimento = dateFormat.parse("11-10-2002");
+            clienteEntity1.setData_nascimento(new java.sql.Date(dataNascimento.getTime()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            
+        }
+        clienteEntity1.setDescricao("Tenho 18 anos");
+        clienteEntity1.setEmail("cliente@gmail.com");
+        clienteEntity1.setId(0);
+        clienteEntity1.setNome("Cliente Teste");
+        clienteEntity1.setSenha("12345678");
+        clienteEntity1.setTelefone("(12) 98199-9998");
+
+        clienteRepository.save(clienteEntity1);
     }
 
     @Override
     public void run(String... args) throws Exception {
-        
+
         inserirRegistros();
 
     }
-    
+
 }

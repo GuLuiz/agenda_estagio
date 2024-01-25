@@ -2,6 +2,7 @@ package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -36,6 +37,7 @@ public class ClienteEntity implements Serializable{
     private Date data_nascimento;
     @Length(max = 100, message = "Limite de 100 caracteres excedido")
     private String descricao;
+    
     private boolean ativo;
 
 }
