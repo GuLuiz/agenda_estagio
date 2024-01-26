@@ -1,7 +1,7 @@
 package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -21,10 +21,9 @@ public class DisponibilidadeEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Length(max = 13)
-    private String dia_semana;
-    private LocalDateTime horario_inicio;
-    private LocalDateTime horario_final;
+    private Integer dia_semana_id;
+    private LocalTime horario_inicio;
+    private LocalTime horario_final;
     private Integer funcionario_id;
 
 }

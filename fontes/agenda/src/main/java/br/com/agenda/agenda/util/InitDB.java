@@ -12,10 +12,12 @@ import org.springframework.stereotype.Component;
 import br.com.agenda.agenda.entities.ClienteEntity;
 import br.com.agenda.agenda.entities.DataBloqueadaEntity;
 import br.com.agenda.agenda.entities.DiaSemanaEntity;
+import br.com.agenda.agenda.entities.DisponibilidadeEntity;
 import br.com.agenda.agenda.entities.UsuarioEntity;
 import br.com.agenda.agenda.repositories.ClienteRepository;
 import br.com.agenda.agenda.repositories.DataBloqueadaRepository;
 import br.com.agenda.agenda.repositories.DiaSemanaRepository;
+import br.com.agenda.agenda.repositories.DisponibilidadeRepository;
 import br.com.agenda.agenda.repositories.UsuarioRepository;
 
 @Component
@@ -32,6 +34,9 @@ public class InitDB implements CommandLineRunner {
 
     @Autowired
     private DiaSemanaRepository diaSemanaRepository;
+
+    @Autowired
+    private DisponibilidadeRepository disponibilidadeRepository;
 
     public void inserirRegistros() {
         System.out.println("Inserindo registros");
@@ -148,6 +153,19 @@ public class InitDB implements CommandLineRunner {
         diaSemanaRepository.save(sabado);
         diaSemanaRepository.save(domingo);
 
+        /*Disponibilidade */
+
+        DisponibilidadeEntity disponibilidade = new DisponibilidadeEntity();
+
+        disponibilidade.setDia_semana_id(1);
+        disponibilidade.setFuncionario_id(1);
+        LocalTime dispHorarioInicio = LocalTime.parse("08:00:00", formatter);
+        disponibilidade.setHorario_inicio(dispHorarioInicio);
+        LocalTime dispHorarioFinal = LocalTime.parse("18:00:00", formatter);
+        disponibilidade.setHorario_final(dispHorarioFinal);
+        disponibilidade.setId(0);
+
+        disponibilidadeRepository.save(disponibilidade);
 
     }
 
