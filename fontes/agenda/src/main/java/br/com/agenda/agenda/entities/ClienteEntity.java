@@ -2,7 +2,6 @@ package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 import org.hibernate.validator.constraints.Length;
 

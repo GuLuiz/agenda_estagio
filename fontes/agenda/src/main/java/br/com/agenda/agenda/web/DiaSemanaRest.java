@@ -13,53 +13,51 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.agenda.agenda.entities.ClienteEntity;
-import br.com.agenda.agenda.services.interfaces.IClienteService;
+import br.com.agenda.agenda.entities.DiaSemanaEntity;
+import br.com.agenda.agenda.services.interfaces.IDiaSemanaService;
 import jakarta.transaction.Transactional;
 
 @RestController
-@RequestMapping("/cliente")
-public class ClienteRest {
-
+@RequestMapping("/diaSemana")
+public class DiaSemanaRest {
+    
     @Autowired
-    private IClienteService clienteService;
+    private IDiaSemanaService diaSemanaService;
 
-     @GetMapping("/listar")
-    public ResponseEntity<List<ClienteEntity>> findAll() {
+    @GetMapping("/listar")
+    public ResponseEntity<List<DiaSemanaEntity>> findAll() {
 
-        return ResponseEntity.ok().body(clienteService.findAll());
+        return ResponseEntity.ok().body(diaSemanaService.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ClienteEntity findById(@PathVariable Integer id) {
-        ClienteEntity result = clienteService.findById(id);
+    public DiaSemanaEntity findById(@PathVariable Integer id) {
+        DiaSemanaEntity result = diaSemanaService.findById(id);
         return result;
     }
 
     @Transactional
     @PostMapping("/adicionar")
-    public ResponseEntity<ClienteEntity> add(@RequestBody ClienteEntity clienteEntity) {
+    public ResponseEntity<DiaSemanaEntity> add(@RequestBody DiaSemanaEntity dia) {
 
-        clienteEntity = clienteService.add(clienteEntity);
-        return ResponseEntity.ok().body(clienteEntity);
+        dia = diaSemanaService.add(dia);
+        return ResponseEntity.ok().body(dia);
     }
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
 
-        clienteService.delete(id);
+        diaSemanaService.delete(id);
         return ResponseEntity.ok().build();
     }
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<ClienteEntity> updateUsuario(@RequestBody ClienteEntity data) {
+    public ResponseEntity<DiaSemanaEntity> updateUsuario(@RequestBody DiaSemanaEntity dia) {
 
-        ClienteEntity usuarioAtualizado = clienteService.add(data);
-        return ResponseEntity.ok().body(usuarioAtualizado);
+        DiaSemanaEntity diaSemanaAtualizado = diaSemanaService.add(dia);
+        return ResponseEntity.ok().body(diaSemanaAtualizado);
 
     }
-
-
 }

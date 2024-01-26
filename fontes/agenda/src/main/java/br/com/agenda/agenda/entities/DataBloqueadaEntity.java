@@ -2,7 +2,7 @@ package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,7 +14,7 @@ import lombok.Data;
 @Data
 @Entity
 @Table(name = "DATA_BLOQUEADA")
-public class DatabloqueadaEntity implements Serializable{
+public class DataBloqueadaEntity implements Serializable{
     private static final long serialVersionUID = 1L;
     
     @Id
@@ -22,7 +22,7 @@ public class DatabloqueadaEntity implements Serializable{
     private Integer id;
     
     private Date data;
-    private LocalDateTime horario_inicio;
-    private LocalDateTime horario_final;
+    private LocalTime horario_inicio;
+    private LocalTime horario_final;
     private Integer funcinario_id;
 }

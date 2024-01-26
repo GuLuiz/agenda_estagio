@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.agenda.agenda.entities.UsuarioEntity;
 import br.com.agenda.agenda.services.interfaces.IUsuarioService;
+import jakarta.transaction.Transactional;
 
 
 @RestController
@@ -36,6 +37,7 @@ public class UsuarioRest {
         return result;
     }
 
+    @Transactional
     @PostMapping("/adicionar")
     public ResponseEntity<UsuarioEntity> add(@RequestBody UsuarioEntity usuarioEntity) {
 
@@ -44,6 +46,7 @@ public class UsuarioRest {
 
     }
 
+    @Transactional
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
 
@@ -51,6 +54,7 @@ public class UsuarioRest {
         return ResponseEntity.ok().build();
     }
 
+    @Transactional
     @PutMapping("/update")
     public ResponseEntity<UsuarioEntity> updateUsuario(@RequestBody UsuarioEntity data) {
 
