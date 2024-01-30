@@ -286,19 +286,19 @@ public class InitDB implements CommandLineRunner {
         AgendamentoEntity agendamento = new AgendamentoEntity();
 
         agendamento.setAtivo(true);
-        agendamento.setCliente_id(1);
+        agendamento.setClienteId(1);
         try {
             java.util.Date agendaData = dateFormat.parse("11-10-2002");
             agendamento.setData(new java.sql.Date(agendaData.getTime()));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        agendamento.setEmpresa_id(1);
-        agendamento.setFuncionario_id(1);
+        agendamento.setEmpresaId(1);
+        agendamento.setFuncionarioId(1);
         LocalTime agendaHora = LocalTime.parse("15:00:00", formatter);
         agendamento.setHorario(agendaHora);
         agendamento.setId(0);
-        agendamento.setServico_id(1);
+        agendamento.setServicoId(1);
 
         agendamentoRepository.save(agendamento);
     }

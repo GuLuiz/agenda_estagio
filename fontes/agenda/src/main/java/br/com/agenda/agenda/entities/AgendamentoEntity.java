@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,10 +22,14 @@ public class AgendamentoEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    private Integer cliente_id;
-    private Integer empresa_id;
-    private Integer servico_id;
-    private Integer funcionario_id;
+    @Column(name = "CLIENTE_ID")
+    private Integer clienteId;
+    @Column(name = "EMPRESA_ID")
+    private Integer empresaId;
+    @Column(name = "SERVICO_ID")
+    private Integer servicoId;
+    @Column(name = "FUNCIONARIO_ID")
+    private Integer funcionarioId;
     private Date data;
     private LocalTime horario; 
     private Boolean ativo;

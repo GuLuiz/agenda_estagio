@@ -48,13 +48,13 @@ public class AgendamentoServiceImpl implements IAgendamentoService {
         agenda = repository.findById(agenda.getId()).orElse(null);
 
         agenda.setAtivo(agenda.getAtivo());
-        agenda.setCliente_id(agenda.getCliente_id());
+        agenda.setClienteId(agenda.getClienteId());
         agenda.setData(agenda.getData());
-        agenda.setEmpresa_id(agenda.getEmpresa_id());
-        agenda.setFuncionario_id(agenda.getFuncionario_id());
+        agenda.setEmpresaId(agenda.getEmpresaId());
+        agenda.setFuncionarioId(agenda.getFuncionarioId());
         agenda.setHorario(agenda.getHorario());
         agenda.setId(agenda.getId());
-        agenda.setServico_id(agenda.getServico_id());
+        agenda.setServicoId(agenda.getServicoId());
         
         agenda = repository.save(agenda);
         return agenda;
