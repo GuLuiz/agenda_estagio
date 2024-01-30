@@ -2,7 +2,7 @@ package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +26,6 @@ public class AgendamentoEntity implements Serializable {
     private Integer servico_id;
     private Integer funcionario_id;
     private Date data;
-    private LocalDateTime horario; 
+    private LocalTime horario; 
     private Boolean ativo;
 }

@@ -3,8 +3,6 @@ package br.com.agenda.agenda.entities;
 import java.io.Serializable;
 import java.time.LocalTime;
 
-import org.hibernate.validator.constraints.Length;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

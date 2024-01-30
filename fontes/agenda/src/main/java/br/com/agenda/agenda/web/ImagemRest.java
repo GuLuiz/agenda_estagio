@@ -13,52 +13,52 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.agenda.agenda.entities.ClienteEntity;
-import br.com.agenda.agenda.services.interfaces.IClienteService;
+import br.com.agenda.agenda.entities.ImagemEntity;
+import br.com.agenda.agenda.services.interfaces.IImagemService;
 import jakarta.transaction.Transactional;
 
 @RestController
-@RequestMapping("/cliente")
-public class ClienteRest {
+@RequestMapping("/imagem")
+public class ImagemRest {
 
     @Autowired
-    private IClienteService clienteService;
+    private IImagemService imagemService;
 
     @GetMapping("/listar")
-    public ResponseEntity<List<ClienteEntity>> findAll() {
+    public ResponseEntity<List<ImagemEntity>> findAll() {
 
-         return ResponseEntity.ok().body(clienteService.findAll());
+        return ResponseEntity.ok().body(imagemService.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ClienteEntity findById(@PathVariable Integer id) {
-        ClienteEntity result = clienteService.findById(id);
+    public ImagemEntity findById(@PathVariable Integer id) {
+        ImagemEntity result = imagemService.findById(id);
         return result;
     }
 
     @Transactional
     @PostMapping("/adicionar")
-    public ResponseEntity<ClienteEntity> add(@RequestBody ClienteEntity clienteEntity) {
+    public ResponseEntity<ImagemEntity> add(@RequestBody ImagemEntity imagemEntity) {
 
-        clienteEntity = clienteService.add(clienteEntity);
-        return ResponseEntity.ok().body(clienteEntity);
+        imagemEntity = imagemService.add(imagemEntity);
+        return ResponseEntity.ok().body(imagemEntity);
     }
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
 
-        clienteService.delete(id);
+        imagemService.delete(id);
         return ResponseEntity.ok().build();
     }
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<ClienteEntity> updateUsuario(@RequestBody ClienteEntity data) {
+    public ResponseEntity<ImagemEntity> updateUsuario(@RequestBody ImagemEntity imagem) {
 
-        ClienteEntity usuarioAtualizado = clienteService.add(data);
-        return ResponseEntity.ok().body(usuarioAtualizado);
-
+        ImagemEntity imagemAtualizado = imagemService.add(imagem);
+        return ResponseEntity.ok().body(imagemAtualizado);
     }
 
+    
 }

@@ -24,5 +24,5 @@ public class DataBloqueadaEntity implements Serializable{
     private Date data;
     private LocalTime horario_inicio;
     private LocalTime horario_final;
-    private Integer funcinario_id;
+    private Integer funcionario_id;
 }

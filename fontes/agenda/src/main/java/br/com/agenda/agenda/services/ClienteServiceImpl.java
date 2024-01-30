@@ -10,7 +10,6 @@ import br.com.agenda.agenda.entities.ClienteEntity;
 import br.com.agenda.agenda.repositories.ClienteRepository;
 import br.com.agenda.agenda.services.interfaces.IClienteService;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.Valid;
 
 @Service
 public class ClienteServiceImpl implements IClienteService {
@@ -44,7 +43,7 @@ public class ClienteServiceImpl implements IClienteService {
     }
 
     @Override
-    public ClienteEntity updateUsuario(@RequestBody @Valid ClienteEntity cliente) {
+    public ClienteEntity updateUsuario(@RequestBody ClienteEntity cliente) {
 
         cliente = repository.findById(cliente.getId()).orElse(null);
 

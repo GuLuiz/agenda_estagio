@@ -2,7 +2,7 @@ package br.com.agenda.agenda.entities;
 
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -21,8 +21,8 @@ public class HorarioBloqueadoEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer dia_semana_id;
-    private LocalDateTime horario_inicio;
-    private LocalDateTime horario_final;
+    private LocalTime horario_inicio;
+    private LocalTime horario_final;
     private Integer funcionario_id;
     
 }

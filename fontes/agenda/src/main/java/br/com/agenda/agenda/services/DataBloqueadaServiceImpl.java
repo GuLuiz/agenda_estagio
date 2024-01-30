@@ -47,7 +47,7 @@ public class DataBloqueadaServiceImpl implements IDataBloqueadaService {
         data = repository.findById(data.getId()).orElse(null);
 
         data.setData(data.getData());
-        data.setFuncinario_id(data.getFuncinario_id());
+        data.setFuncionario_id(data.getFuncionario_id());
         data.setHorario_final(data.getHorario_final());
         data.setHorario_inicio(data.getHorario_inicio());
         data.setId(data.getId());

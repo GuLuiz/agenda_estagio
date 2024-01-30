@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.agenda.agenda.entities.DiaSemanaEntity;
 import br.com.agenda.agenda.entities.DisponibilidadeEntity;
 import br.com.agenda.agenda.services.interfaces.IDisponibilidadeService;
 import jakarta.transaction.Transactional;

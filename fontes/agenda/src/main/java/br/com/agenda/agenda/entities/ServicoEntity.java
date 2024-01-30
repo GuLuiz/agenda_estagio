@@ -1,7 +1,7 @@
 package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -24,6 +24,6 @@ public class ServicoEntity implements Serializable {
     @Length(max = 100, message = "Limite de 100 caracteres excedido")
     private String nome;
     private Double preco;
-    private LocalDateTime tempo;
+    private LocalTime tempo;
 
 }

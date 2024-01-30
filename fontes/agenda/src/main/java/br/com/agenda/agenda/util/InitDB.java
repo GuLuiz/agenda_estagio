@@ -9,15 +9,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import br.com.agenda.agenda.entities.AgendamentoEntity;
 import br.com.agenda.agenda.entities.ClienteEntity;
 import br.com.agenda.agenda.entities.DataBloqueadaEntity;
 import br.com.agenda.agenda.entities.DiaSemanaEntity;
 import br.com.agenda.agenda.entities.DisponibilidadeEntity;
+import br.com.agenda.agenda.entities.EmpresaEntity;
+import br.com.agenda.agenda.entities.FuncionarioEntity;
+import br.com.agenda.agenda.entities.FuncionarioMenuEntity;
+import br.com.agenda.agenda.entities.HorarioBloqueadoEntity;
+import br.com.agenda.agenda.entities.MenuEntity;
+import br.com.agenda.agenda.entities.ServicoEntity;
 import br.com.agenda.agenda.entities.UsuarioEntity;
+import br.com.agenda.agenda.repositories.AgendamentoRepository;
 import br.com.agenda.agenda.repositories.ClienteRepository;
 import br.com.agenda.agenda.repositories.DataBloqueadaRepository;
 import br.com.agenda.agenda.repositories.DiaSemanaRepository;
 import br.com.agenda.agenda.repositories.DisponibilidadeRepository;
+import br.com.agenda.agenda.repositories.EmpresaRepository;
+import br.com.agenda.agenda.repositories.FuncionarioMenuRepository;
+import br.com.agenda.agenda.repositories.FuncionarioRepository;
+import br.com.agenda.agenda.repositories.HorarioBloqueadoRepository;
+import br.com.agenda.agenda.repositories.MenuRepository;
+import br.com.agenda.agenda.repositories.ServicoRepository;
 import br.com.agenda.agenda.repositories.UsuarioRepository;
 
 @Component
@@ -37,6 +51,27 @@ public class InitDB implements CommandLineRunner {
 
     @Autowired
     private DisponibilidadeRepository disponibilidadeRepository;
+
+    @Autowired
+    private EmpresaRepository empresaRepository;
+
+    @Autowired
+    private FuncionarioRepository funcionarioRepository;
+
+    @Autowired
+    private FuncionarioMenuRepository funcionarioMenuRepository;
+
+    @Autowired
+    private HorarioBloqueadoRepository horarioBloqueadoRepository;
+
+    @Autowired
+    private MenuRepository menuRepository;
+    
+    @Autowired
+    private ServicoRepository servicoRepository;
+
+    @Autowired
+    private AgendamentoRepository agendamentoRepository;
 
     public void inserirRegistros() {
         System.out.println("Inserindo registros");
@@ -110,7 +145,7 @@ public class InitDB implements CommandLineRunner {
         } catch (ParseException e) {
             e.printStackTrace();   
         }
-        dataBloqueadaEntity1.setFuncinario_id(0);
+        dataBloqueadaEntity1.setFuncionario_id(0);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         LocalTime horarioInicio = LocalTime.parse("14:50:22", formatter);
         dataBloqueadaEntity1.setHorario_inicio(horarioInicio);
@@ -167,6 +202,105 @@ public class InitDB implements CommandLineRunner {
 
         disponibilidadeRepository.save(disponibilidade);
 
+        /*Empresa */
+
+        EmpresaEntity empresa = new EmpresaEntity();
+
+        empresa.setAtivo(true);
+        empresa.setBairro("Centro");
+        empresa.setCidade("São Paulo");
+        empresa.setComplemento("quadra 3");
+        empresa.setId(0);
+        empresa.setLogo_id(1);
+        empresa.setLogradouro("Rua São Dimas");
+        empresa.setNome("Teste 1 LTDA");
+        empresa.setNumero("991");
+        empresa.setUf("SP");
+        empresa.setUsuario_id(1);
+        empresa.setCep("12333-600");
+
+        empresaRepository.save(empresa);
+
+        /*Funcionario */
+
+        FuncionarioEntity funcionario = new FuncionarioEntity();
+
+        funcionario.setAtivo(true);
+        funcionario.setEmail("funcionario@gmail.com");
+        funcionario.setEmpresa_id(1);
+        funcionario.setFoto_id(1);
+        funcionario.setId(0);
+        funcionario.setNome("Funcionario 1");
+        funcionario.setSenha("Senha123");
+        funcionario.setTelefone("(12) 99965-1425");
+        
+        funcionarioRepository.save(funcionario);
+
+        /*Funcionario */
+
+        FuncionarioMenuEntity funcionarioMenu = new FuncionarioMenuEntity();
+
+        funcionarioMenu.setFuncionario_id(1);
+        funcionarioMenu.setId(0);
+        funcionarioMenu.setMenu_id(1);
+
+        funcionarioMenuRepository.save(funcionarioMenu);
+        
+        /*Funcionario */
+
+        HorarioBloqueadoEntity horarioBloqueado = new HorarioBloqueadoEntity();
+
+        horarioBloqueado.setDia_semana_id(1);
+        horarioBloqueado.setFuncionario_id(1);
+        LocalTime horarioBloqInicio = LocalTime.parse("12:00:00",formatter);
+        horarioBloqueado.setHorario_inicio(horarioBloqInicio);
+        LocalTime horarioBloqFinal = LocalTime.parse("13:00:00", formatter);
+        horarioBloqueado.setHorario_final(horarioBloqFinal);
+        horarioBloqueado.setId(0);
+
+        horarioBloqueadoRepository.save(horarioBloqueado);
+
+        /* Menu */
+
+        MenuEntity menu = new MenuEntity();
+
+        menu.setId(0);
+        menu.setNome("Teste");
+
+        menuRepository.save(menu);
+
+        /* Servico */
+
+        ServicoEntity servico = new ServicoEntity();
+
+        servico.setId(0);
+        servico.setNome("Modelo Y");
+        servico.setPreco(150.00);
+        LocalTime timeService = LocalTime.parse("01:00:00", formatter);
+        servico.setTempo(timeService);
+        
+        servicoRepository.save(servico);
+
+        /* Agendamento */
+
+        AgendamentoEntity agendamento = new AgendamentoEntity();
+
+        agendamento.setAtivo(true);
+        agendamento.setCliente_id(1);
+        try {
+            java.util.Date agendaData = dateFormat.parse("11-10-2002");
+            agendamento.setData(new java.sql.Date(agendaData.getTime()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        agendamento.setEmpresa_id(1);
+        agendamento.setFuncionario_id(1);
+        LocalTime agendaHora = LocalTime.parse("15:00:00", formatter);
+        agendamento.setHorario(agendaHora);
+        agendamento.setId(0);
+        agendamento.setServico_id(1);
+
+        agendamentoRepository.save(agendamento);
     }
 
     @Override

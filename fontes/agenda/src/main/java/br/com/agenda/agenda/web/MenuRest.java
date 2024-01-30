@@ -13,52 +13,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.agenda.agenda.entities.ClienteEntity;
-import br.com.agenda.agenda.services.interfaces.IClienteService;
+import br.com.agenda.agenda.entities.MenuEntity;
+import br.com.agenda.agenda.services.interfaces.IMenuService;
 import jakarta.transaction.Transactional;
 
 @RestController
-@RequestMapping("/cliente")
-public class ClienteRest {
+@RequestMapping("/menu")
+public class MenuRest {
 
     @Autowired
-    private IClienteService clienteService;
+    private IMenuService menuService;
 
     @GetMapping("/listar")
-    public ResponseEntity<List<ClienteEntity>> findAll() {
+    public ResponseEntity<List<MenuEntity>> findAll() {
 
-         return ResponseEntity.ok().body(clienteService.findAll());
+        return ResponseEntity.ok().body(menuService.findAll());
     }
-
+    
     @GetMapping(value = "/{id}")
-    public ClienteEntity findById(@PathVariable Integer id) {
-        ClienteEntity result = clienteService.findById(id);
+    public MenuEntity findById(@PathVariable Integer id) {
+        MenuEntity result = menuService.findById(id);
         return result;
     }
 
     @Transactional
     @PostMapping("/adicionar")
-    public ResponseEntity<ClienteEntity> add(@RequestBody ClienteEntity clienteEntity) {
+    public ResponseEntity<MenuEntity> add(@RequestBody MenuEntity menuEntity) {
 
-        clienteEntity = clienteService.add(clienteEntity);
-        return ResponseEntity.ok().body(clienteEntity);
+        menuEntity = menuService.add(menuEntity);
+        return ResponseEntity.ok().body(menuEntity);
     }
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
 
-        clienteService.delete(id);
+        menuService.delete(id);
         return ResponseEntity.ok().build();
     }
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<ClienteEntity> updateUsuario(@RequestBody ClienteEntity data) {
+    public ResponseEntity<MenuEntity> updateUsuario(@RequestBody MenuEntity menu) {
 
-        ClienteEntity usuarioAtualizado = clienteService.add(data);
-        return ResponseEntity.ok().body(usuarioAtualizado);
-
+        MenuEntity menuAtualizado = menuService.add(menu);
+        return ResponseEntity.ok().body(menuAtualizado);
     }
-
 }
