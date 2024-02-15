@@ -31,9 +31,9 @@ public class DataBloqueadaRest {
     }
 
      @GetMapping(value = "/{id}")
-    public DataBloqueadaEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<DataBloqueadaEntity> findById(@PathVariable Integer id) {
         DataBloqueadaEntity result = dataBloqueadaService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

@@ -31,9 +31,9 @@ public class MenuRest {
     }
     
     @GetMapping(value = "/{id}")
-    public MenuEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<MenuEntity> findById(@PathVariable Integer id) {
         MenuEntity result = menuService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

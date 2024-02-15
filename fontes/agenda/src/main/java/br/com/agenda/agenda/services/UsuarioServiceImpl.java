@@ -1,6 +1,7 @@
 package br.com.agenda.agenda.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,8 +36,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Override
     public UsuarioEntity findById(Integer id) {
 
-        return usuarioRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
+        UsuarioEntity usuarioEntity = usuarioRepository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
+        
+        return usuarioEntity;
     }
 
     @Override
@@ -49,7 +52,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
         UsuarioEntity usuario = usuarioRepository.findById(data.id()).orElse(null);
 
-        usuario.setId(data.id());
+        usuario.setUsuarioId(data.id());
         usuario.setNome(data.nome());
         usuario.setAtivo(data.ativo());
         usuario.setBairro(data.bairro());

@@ -14,6 +14,6 @@ public interface IDiaSemanaService {
 
     void delete(Integer id);
 
-    DiaSemanaEntity updateUsuario(DiaSemanaEntity dia);
+    DiaSemanaEntity updateDiaSemana(DiaSemanaEntity dia);
 
 }

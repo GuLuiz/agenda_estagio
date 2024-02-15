@@ -20,7 +20,7 @@ public class FuncionarioEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer funcionarioId;
     @Length(max = 100, message = "Limite de 100 caracteres excedido")
     private String nome;
     @Length(max = 19, message = "O cep deve conter até 19 dígitos")

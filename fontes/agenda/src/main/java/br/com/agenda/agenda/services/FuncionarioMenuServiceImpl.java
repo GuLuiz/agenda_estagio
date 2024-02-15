@@ -43,12 +43,12 @@ public class FuncionarioMenuServiceImpl implements IFuncionarioMenuService {
     }
 
     @Override
-    public FuncionarioMenuEntity updateUsuario(@RequestBody FuncionarioMenuEntity funcMenu) {
+    public FuncionarioMenuEntity updateFuncionarioMenu(@RequestBody FuncionarioMenuEntity funcMenu) {
 
-         funcMenu = repository.findById(funcMenu.getId()).orElse(null);
+         funcMenu = repository.findById(funcMenu.getFuncionarioMenuId()).orElse(null);
 
         funcMenu.setFuncionario_id(funcMenu.getFuncionario_id());
-        funcMenu.setId(funcMenu.getId());
+        funcMenu.setFuncionarioMenuId(funcMenu.getFuncionarioMenuId());
         funcMenu.setMenu_id(funcMenu.getMenu_id());
 
         funcMenu = repository.save(funcMenu);

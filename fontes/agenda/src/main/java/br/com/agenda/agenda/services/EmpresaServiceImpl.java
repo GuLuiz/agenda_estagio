@@ -43,22 +43,21 @@ public class EmpresaServiceImpl implements IEmpresaService {
     }
 
     @Override
-    public EmpresaEntity updateUsuario(@RequestBody EmpresaEntity empresa) {
+    public EmpresaEntity updateEmpresa(@RequestBody EmpresaEntity empresa) {
 
-        empresa = repository.findById(empresa.getId()).orElse(null);
+        empresa = repository.findById(empresa.getEmpresaId()).orElse(null);
 
         empresa.setAtivo(empresa.getAtivo());
         empresa.setBairro(empresa.getBairro());
         empresa.setCep(empresa.getCep());
         empresa.setCidade(empresa.getCidade());
         empresa.setComplemento(empresa.getComplemento());
-        empresa.setId(empresa.getId());
+        empresa.setEmpresaId(empresa.getEmpresaId());
         empresa.setLogo_id(empresa.getLogo_id());
         empresa.setLogradouro(empresa.getLogradouro());
         empresa.setNome(empresa.getNome());
         empresa.setNumero(empresa.getNumero());
         empresa.setUf(empresa.getUf());
-        empresa.setUsuario_id(empresa.getUsuario_id());
 
         empresa = repository.save(empresa);
         return empresa;

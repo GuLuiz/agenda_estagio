@@ -31,9 +31,9 @@ public class EmpresaRest {
     }
 
     @GetMapping(value = "/{id}")
-    public EmpresaEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<EmpresaEntity> findById(@PathVariable Integer id) {
         EmpresaEntity result = empresaService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

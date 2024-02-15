@@ -31,9 +31,9 @@ public class ImagemRest {
     }
 
     @GetMapping(value = "/{id}")
-    public ImagemEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<ImagemEntity> findById(@PathVariable Integer id) {
         ImagemEntity result = imagemService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

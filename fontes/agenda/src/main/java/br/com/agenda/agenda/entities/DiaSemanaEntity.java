@@ -19,7 +19,7 @@ public class DiaSemanaEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer diaSemanaId;
     @Length(max = 13)
     private String name;
 

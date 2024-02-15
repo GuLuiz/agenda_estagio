@@ -14,6 +14,6 @@ public interface IServicoService {
 
     void delete(Integer id);
 
-    ServicoEntity updateUsuario(ServicoEntity servico);
+    ServicoEntity updateServico(ServicoEntity servico);
 
 }

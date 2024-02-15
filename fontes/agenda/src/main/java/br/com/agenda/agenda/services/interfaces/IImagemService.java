@@ -14,6 +14,6 @@ public interface IImagemService {
 
     void delete(Integer id);
 
-    ImagemEntity updateUsuario(ImagemEntity img);
+    ImagemEntity updateImagem(ImagemEntity img);
 
 }

@@ -32,9 +32,9 @@ public class HorarioBloqueadoRest {
     }
 
     @GetMapping(value = "/{id}")
-    public HorarioBloqueadoEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<HorarioBloqueadoEntity> findById(@PathVariable Integer id) {
         HorarioBloqueadoEntity result = horarioBloqueadoService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

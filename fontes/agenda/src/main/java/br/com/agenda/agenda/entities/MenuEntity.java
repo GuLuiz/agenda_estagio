@@ -19,7 +19,7 @@ public class MenuEntity implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer menuId;
     @Length(max = 100, message = "Limite de 100 caracteres excedido") 
     private String nome;
 

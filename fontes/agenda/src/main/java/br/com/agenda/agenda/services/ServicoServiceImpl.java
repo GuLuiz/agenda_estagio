@@ -43,11 +43,11 @@ public class ServicoServiceImpl implements IServicoService {
     }
 
     @Override
-    public ServicoEntity updateUsuario(@RequestBody ServicoEntity servico) {
+    public ServicoEntity updateServico(@RequestBody ServicoEntity servico) {
 
-        servico = repository.findById(servico.getId()).orElse(null);
+        servico = repository.findById(servico.getServicoId()).orElse(null);
 
-        servico.setId(servico.getId());
+        servico.setServicoId(servico.getServicoId());
         servico.setNome(servico.getNome());
         servico.setPreco(servico.getPreco());
         servico.setTempo(servico.getTempo());

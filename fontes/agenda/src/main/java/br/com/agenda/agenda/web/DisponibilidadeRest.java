@@ -31,9 +31,9 @@ public class DisponibilidadeRest {
     }
 
     @GetMapping(value = "/{id}")
-    public DisponibilidadeEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<DisponibilidadeEntity> findById(@PathVariable Integer id) {
         DisponibilidadeEntity result = disponibilidadeService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

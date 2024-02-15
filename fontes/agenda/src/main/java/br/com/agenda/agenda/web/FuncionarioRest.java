@@ -31,9 +31,9 @@ public class FuncionarioRest {
     }
 
     @GetMapping(value = "/{id}")
-    public FuncionarioEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<FuncionarioEntity> findById(@PathVariable Integer id) {
         FuncionarioEntity result = funcionarioService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

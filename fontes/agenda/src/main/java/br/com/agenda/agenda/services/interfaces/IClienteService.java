@@ -14,6 +14,6 @@ public interface IClienteService {
 
     void delete(Integer id);
 
-    ClienteEntity updateUsuario(ClienteEntity cliente);
+    ClienteEntity updateCliente(ClienteEntity cliente);
 
 }

@@ -32,9 +32,9 @@ public class UsuarioRest {
     }
 
     @GetMapping(value = "/{id}")
-    public UsuarioEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<UsuarioEntity> findById(@PathVariable Integer id) {
         UsuarioEntity result = usuarioService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional
@@ -66,7 +66,7 @@ public class UsuarioRest {
     @PutMapping("/updateNomeEmail")
     public ResponseEntity<UsuarioEntity> updateNomeEmail(@RequestBody UsuarioEntity data) {
 
-        UsuarioEntity usuarioAtualizado = usuarioService.findById(data.getId());
+        UsuarioEntity usuarioAtualizado = usuarioService.findById(data.getUsuarioId());
         usuarioAtualizado.setNome(data.getNome());
         usuarioAtualizado.setEmail(data.getEmail());
         usuarioAtualizado = usuarioService.add(usuarioAtualizado);

@@ -21,7 +21,7 @@ public class ClienteEntity implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer clienteId;
     @Length(max = 100, message = "Limite de 100 caracteres excedido")
     private String nome;
     @Length(max = 19, message = "O campo deve conter até 19 dígitos")

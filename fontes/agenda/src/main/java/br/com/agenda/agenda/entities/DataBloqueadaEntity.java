@@ -19,7 +19,7 @@ public class DataBloqueadaEntity implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer dataBloqueadaId;
     
     private Date data;
     private LocalTime horario_inicio;

@@ -45,9 +45,9 @@ public class DisponibilidadeServiceImpl implements IDisponibilidadeService {
      @Override
     public DisponibilidadeEntity updateDisponibilidade(@RequestBody DisponibilidadeEntity disp) {
 
-        disp = repository.findById(disp.getId()).orElse(null);
+        disp = repository.findById(disp.getDisponibilidadeId()).orElse(null);
 
-        disp.setId(disp.getId());
+        disp.setDisponibilidadeId(disp.getDisponibilidadeId());
         disp.setDia_semana_id(disp.getDia_semana_id());
         disp.setFuncionario_id(disp.getFuncionario_id());
         disp.setHorario_inicio(disp.getHorario_inicio());

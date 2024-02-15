@@ -17,7 +17,7 @@ public class FuncionarioMenuEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer funcionarioMenuId;
     
     private Integer menu_id;
     private Integer funcionario_id;

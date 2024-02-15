@@ -20,7 +20,7 @@ public class ServicoEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer servicoId;
     @Length(max = 100, message = "Limite de 100 caracteres excedido")
     private String nome;
     private Double preco;

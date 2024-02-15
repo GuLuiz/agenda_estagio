@@ -31,9 +31,9 @@ public class ClienteRest {
     }
 
     @GetMapping(value = "/{id}")
-    public ClienteEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<ClienteEntity> findById(@PathVariable Integer id) {
         ClienteEntity result = clienteService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

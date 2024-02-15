@@ -14,6 +14,6 @@ public interface IFuncionarioService {
 
     void delete(Integer id);
 
-    FuncionarioEntity updateUsuario(FuncionarioEntity funcionario);
+    FuncionarioEntity updateFuncionario(FuncionarioEntity funcionario);
 
 }

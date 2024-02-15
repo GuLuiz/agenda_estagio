@@ -31,9 +31,9 @@ public class ServicoRest {
     }
 
     @GetMapping(value = "/{id}")
-    public ServicoEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<ServicoEntity> findById(@PathVariable Integer id) {
         ServicoEntity result = servicoService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

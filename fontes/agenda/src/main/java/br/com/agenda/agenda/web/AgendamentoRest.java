@@ -31,9 +31,9 @@ public class AgendamentoRest {
     }
 
     @GetMapping(value = "/{id}")
-    public AgendamentoEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<AgendamentoEntity> findById(@PathVariable Integer id) {
         AgendamentoEntity result = agendamentoService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }   
 
     @Transactional

@@ -14,6 +14,6 @@ public interface IMenuService {
 
     void delete(Integer id);
 
-    MenuEntity updateUsuario(MenuEntity menu);
+    MenuEntity updateMenu(MenuEntity menu);
 
 }

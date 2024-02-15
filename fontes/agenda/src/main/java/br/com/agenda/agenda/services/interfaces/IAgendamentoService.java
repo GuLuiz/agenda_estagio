@@ -14,6 +14,6 @@ public interface IAgendamentoService {
 
     void delete(Integer id);
 
-    AgendamentoEntity updateUsuario(AgendamentoEntity agenda);
+    AgendamentoEntity updateAgendamento(AgendamentoEntity agenda);
 
 }

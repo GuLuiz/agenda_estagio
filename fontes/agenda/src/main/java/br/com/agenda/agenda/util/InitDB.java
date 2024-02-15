@@ -79,7 +79,7 @@ public class InitDB implements CommandLineRunner {
         /*Usuario */
 
         UsuarioEntity usuarioEntity1 = new UsuarioEntity();
-        usuarioEntity1.setId(0);
+        usuarioEntity1.setUsuarioId(0);
         usuarioEntity1.setAtivo(true);
         usuarioEntity1.setBairro("Parque Itamaraty");
         usuarioEntity1.setCep("12222-600");
@@ -95,7 +95,7 @@ public class InitDB implements CommandLineRunner {
 
         UsuarioEntity usuarioEntity2 = new UsuarioEntity();
 
-        usuarioEntity2.setId(0);
+        usuarioEntity2.setUsuarioId(0);
         usuarioEntity2.setAtivo(true);
         usuarioEntity2.setBairro("Jardim Estrela");
         usuarioEntity2.setCep("12305-150");
@@ -109,8 +109,27 @@ public class InitDB implements CommandLineRunner {
         usuarioEntity2.setTelefone("(12) 98255-6589");
         usuarioEntity2.setUf("RJ");
 
-        usuarioRepository.save(usuarioEntity1);
+        /*Empresa */
+
+        EmpresaEntity empresa = new EmpresaEntity();
+
+        empresa.setAtivo(true);
+        empresa.setBairro("Centro");
+        empresa.setCidade("São Paulo");
+        empresa.setComplemento("quadra 3");
+        empresa.setEmpresaId(0);
+        empresa.setLogo_id(1);
+        empresa.setLogradouro("Rua São Dimas");
+        empresa.setNome("Teste 1 LTDA");
+        empresa.setNumero("991");
+        empresa.setUf("SP");
+        empresa.setCep("12333-600");
+        
+        usuarioEntity1 = usuarioRepository.save(usuarioEntity1);
         usuarioRepository.save(usuarioEntity2);
+        empresa.setUsuarioEntity(usuarioEntity1);
+        empresaRepository.save(empresa);
+
 
         /*Cliente */
 
@@ -127,7 +146,7 @@ public class InitDB implements CommandLineRunner {
         }
         clienteEntity1.setDescricao("o céu é azul");
         clienteEntity1.setEmail("cliente@gmail.com");
-        clienteEntity1.setId(0);
+        clienteEntity1.setClienteId(0);
         clienteEntity1.setNome("Cliente Teste");
         clienteEntity1.setSenha("12345678");
         clienteEntity1.setTelefone("(12) 98199-9998");
@@ -151,7 +170,7 @@ public class InitDB implements CommandLineRunner {
         dataBloqueadaEntity1.setHorario_inicio(horarioInicio);
         LocalTime horarioFinal = LocalTime.parse("10:50:22", formatter);
         dataBloqueadaEntity1.setHorario_final(horarioFinal);
-        dataBloqueadaEntity1.setId(1);     
+        dataBloqueadaEntity1.setDataBloqueadaId(1);     
         
         dataBloqueadaRepository.save(dataBloqueadaEntity1);
 
@@ -165,19 +184,19 @@ public class InitDB implements CommandLineRunner {
         DiaSemanaEntity sabado = new DiaSemanaEntity();
         DiaSemanaEntity domingo = new DiaSemanaEntity();
 
-        segunda.setId(0);
+        segunda.setDiaSemanaId(0);
         segunda.setName("Segunda-Feira");
-        terca.setId(0);
+        terca.setDiaSemanaId(0);
         terca.setName("Terça-Feira");
-        quarta.setId(0);
+        quarta.setDiaSemanaId(0);
         quarta.setName("Quarta-Feira");
-        quinta.setId(0);
+        quinta.setDiaSemanaId(0);
         quinta.setName("Quinta-Feira");
-        sexta.setId(0);
+        sexta.setDiaSemanaId(0);
         sexta.setName("Sexta-Feira");
-        sabado.setId(0);
+        sabado.setDiaSemanaId(0);
         sabado.setName("Sabado");
-        domingo.setId(0);
+        domingo.setDiaSemanaId(0);
         domingo.setName("Domingo");
 
         diaSemanaRepository.save(segunda);
@@ -198,28 +217,9 @@ public class InitDB implements CommandLineRunner {
         disponibilidade.setHorario_inicio(dispHorarioInicio);
         LocalTime dispHorarioFinal = LocalTime.parse("18:00:00", formatter);
         disponibilidade.setHorario_final(dispHorarioFinal);
-        disponibilidade.setId(0);
+        disponibilidade.setDisponibilidadeId(0);
 
         disponibilidadeRepository.save(disponibilidade);
-
-        /*Empresa */
-
-        EmpresaEntity empresa = new EmpresaEntity();
-
-        empresa.setAtivo(true);
-        empresa.setBairro("Centro");
-        empresa.setCidade("São Paulo");
-        empresa.setComplemento("quadra 3");
-        empresa.setId(0);
-        empresa.setLogo_id(1);
-        empresa.setLogradouro("Rua São Dimas");
-        empresa.setNome("Teste 1 LTDA");
-        empresa.setNumero("991");
-        empresa.setUf("SP");
-        empresa.setUsuario_id(1);
-        empresa.setCep("12333-600");
-
-        empresaRepository.save(empresa);
 
         /*Funcionario */
 
@@ -229,7 +229,7 @@ public class InitDB implements CommandLineRunner {
         funcionario.setEmail("funcionario@gmail.com");
         funcionario.setEmpresa_id(1);
         funcionario.setFoto_id(1);
-        funcionario.setId(0);
+        funcionario.setFuncionarioId(0);
         funcionario.setNome("Funcionario 1");
         funcionario.setSenha("Senha123");
         funcionario.setTelefone("(12) 99965-1425");
@@ -241,7 +241,7 @@ public class InitDB implements CommandLineRunner {
         FuncionarioMenuEntity funcionarioMenu = new FuncionarioMenuEntity();
 
         funcionarioMenu.setFuncionario_id(1);
-        funcionarioMenu.setId(0);
+        funcionarioMenu.setFuncionarioMenuId(0);
         funcionarioMenu.setMenu_id(1);
 
         funcionarioMenuRepository.save(funcionarioMenu);
@@ -256,7 +256,7 @@ public class InitDB implements CommandLineRunner {
         horarioBloqueado.setHorario_inicio(horarioBloqInicio);
         LocalTime horarioBloqFinal = LocalTime.parse("13:00:00", formatter);
         horarioBloqueado.setHorario_final(horarioBloqFinal);
-        horarioBloqueado.setId(0);
+        horarioBloqueado.setHorarioBloqueadoId(0);
 
         horarioBloqueadoRepository.save(horarioBloqueado);
 
@@ -264,7 +264,7 @@ public class InitDB implements CommandLineRunner {
 
         MenuEntity menu = new MenuEntity();
 
-        menu.setId(0);
+        menu.setMenuId(0);
         menu.setNome("Teste");
 
         menuRepository.save(menu);
@@ -273,7 +273,7 @@ public class InitDB implements CommandLineRunner {
 
         ServicoEntity servico = new ServicoEntity();
 
-        servico.setId(0);
+        servico.setServicoId(0);
         servico.setNome("Modelo Y");
         servico.setPreco(150.00);
         LocalTime timeService = LocalTime.parse("01:00:00", formatter);
@@ -297,7 +297,7 @@ public class InitDB implements CommandLineRunner {
         agendamento.setFuncionarioId(1);
         LocalTime agendaHora = LocalTime.parse("15:00:00", formatter);
         agendamento.setHorario(agendaHora);
-        agendamento.setId(0);
+        agendamento.setAgendamentoId(0);
         agendamento.setServicoId(1);
 
         agendamentoRepository.save(agendamento);

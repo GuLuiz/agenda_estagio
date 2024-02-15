@@ -43,15 +43,15 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
     }
 
     @Override
-    public FuncionarioEntity updateUsuario(@RequestBody FuncionarioEntity funcionario) {
+    public FuncionarioEntity updateFuncionario(@RequestBody FuncionarioEntity funcionario) {
 
-        funcionario = repository.findById(funcionario.getId()).orElse(null);
+        funcionario = repository.findById(funcionario.getFuncionarioId()).orElse(null);
 
         funcionario.setAtivo(funcionario.getAtivo());
         funcionario.setEmail(funcionario.getEmail());
         funcionario.setEmpresa_id(funcionario.getEmpresa_id());
         funcionario.setFoto_id(funcionario.getFoto_id());
-        funcionario.setId(funcionario.getId());
+        funcionario.setFuncionarioId(funcionario.getFuncionarioId());
         funcionario.setNome(funcionario.getNome());
         funcionario.setSenha(funcionario.getSenha());
         funcionario.setTelefone(funcionario.getTelefone());

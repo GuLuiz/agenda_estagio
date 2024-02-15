@@ -14,6 +14,6 @@ public interface IHorarioBloqueadoService {
 
     void delete(Integer id);
 
-    HorarioBloqueadoEntity updateUsuario(HorarioBloqueadoEntity horarioBloq);
+    HorarioBloqueadoEntity updateHorarioBloqueado(HorarioBloqueadoEntity horarioBloq);
 
 }

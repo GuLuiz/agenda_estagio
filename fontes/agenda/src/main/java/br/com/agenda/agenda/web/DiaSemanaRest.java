@@ -31,9 +31,9 @@ public class DiaSemanaRest {
     }
 
     @GetMapping(value = "/{id}")
-    public DiaSemanaEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<DiaSemanaEntity> findById(@PathVariable Integer id) {
         DiaSemanaEntity result = diaSemanaService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional

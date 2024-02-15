@@ -18,7 +18,7 @@ public class DisponibilidadeEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer disponibilidadeId;
     private Integer dia_semana_id;
     private LocalTime horario_inicio;
     private LocalTime horario_final;
