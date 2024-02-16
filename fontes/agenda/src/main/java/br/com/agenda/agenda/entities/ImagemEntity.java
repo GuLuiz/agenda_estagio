@@ -21,4 +21,5 @@ public class ImagemEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer imagemId;
     private ImageIcon imagem;
+
 }

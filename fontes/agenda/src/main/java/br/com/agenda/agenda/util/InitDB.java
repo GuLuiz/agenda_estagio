@@ -118,7 +118,6 @@ public class InitDB implements CommandLineRunner {
         empresa.setCidade("São Paulo");
         empresa.setComplemento("quadra 3");
         empresa.setEmpresaId(0);
-        empresa.setLogo_id(1);
         empresa.setLogradouro("Rua São Dimas");
         empresa.setNome("Teste 1 LTDA");
         empresa.setNumero("991");
@@ -268,7 +267,6 @@ public class InitDB implements CommandLineRunner {
         menu.setNome("Teste");
 
         menuRepository.save(menu);
-
         /* Servico */
 
         ServicoEntity servico = new ServicoEntity();
@@ -279,12 +277,11 @@ public class InitDB implements CommandLineRunner {
         LocalTime timeService = LocalTime.parse("01:00:00", formatter);
         servico.setTempo(timeService);
         
-        servicoRepository.save(servico);
-
+        
         /* Agendamento */
 
         AgendamentoEntity agendamento = new AgendamentoEntity();
-
+        
         agendamento.setAtivo(true);
         agendamento.setClienteId(1);
         try {
@@ -298,10 +295,13 @@ public class InitDB implements CommandLineRunner {
         LocalTime agendaHora = LocalTime.parse("15:00:00", formatter);
         agendamento.setHorario(agendaHora);
         agendamento.setAgendamentoId(0);
-        agendamento.setServicoId(1);
+        
 
-        agendamentoRepository.save(agendamento);
+        agendamento = agendamentoRepository.save(agendamento);
+        servico.setAgendamentoEntity(agendamento);
+        servicoRepository.save(servico);
     }
+
 
     @Override
     public void run(String... args) throws Exception {

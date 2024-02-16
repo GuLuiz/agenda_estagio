@@ -53,7 +53,6 @@ public class EmpresaServiceImpl implements IEmpresaService {
         empresa.setCidade(empresa.getCidade());
         empresa.setComplemento(empresa.getComplemento());
         empresa.setEmpresaId(empresa.getEmpresaId());
-        empresa.setLogo_id(empresa.getLogo_id());
         empresa.setLogradouro(empresa.getLogradouro());
         empresa.setNome(empresa.getNome());
         empresa.setNumero(empresa.getNumero());

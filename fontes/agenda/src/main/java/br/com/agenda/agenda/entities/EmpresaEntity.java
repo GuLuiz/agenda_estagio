@@ -40,11 +40,12 @@ public class EmpresaEntity implements Serializable {
     private String uf;
     @Length(min = 8, max = 9, message = "O cep deve conter 6 dígitos")
     private String cep;
-    private Integer logo_id;
+    
     private Boolean ativo;
  
     @ManyToOne
     @JoinColumn(name = "usuario_id")
     @JsonIgnore
     private UsuarioEntity usuarioEntity;
+
 }
