@@ -264,11 +264,13 @@ public class InitDB implements CommandLineRunner {
         FuncionarioServicoEntity funcionarioServico = new FuncionarioServicoEntity();
 
         funcionarioServico.setFuncionarioServicoId(0);
-        funcionarioServico.setFuncionarioId(1);
+
 
         funcionarioServico = funcionarioServicoRepository.save(funcionarioServico);
         servico.setFuncionarioServico(funcionarioServico);
+        funcionario.setFuncionarioServico(funcionarioServico);
         servicoRepository.save(servico);
+        funcionarioRepository.save(funcionario);
         /* HorarioBloqueado */
 
         HorarioBloqueadoEntity horarioBloqueado = new HorarioBloqueadoEntity();

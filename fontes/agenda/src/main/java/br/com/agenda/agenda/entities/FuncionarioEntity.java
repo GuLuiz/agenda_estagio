@@ -4,10 +4,16 @@ import java.io.Serializable;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import lombok.Data;
@@ -34,4 +40,9 @@ public class FuncionarioEntity implements Serializable {
     private Integer empresa_id;
     private Boolean ativo;
     
+    
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "funcionario_servico_id")
+    @JsonIgnore
+    private FuncionarioServicoEntity funcionarioServico;
 }
