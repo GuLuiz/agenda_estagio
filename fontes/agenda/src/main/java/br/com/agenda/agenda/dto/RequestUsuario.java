@@ -1,4 +1,4 @@
-package br.com.agenda.agenda.DTO;
+package br.com.agenda.agenda.dto;
 
 import org.hibernate.validator.constraints.Length;
 

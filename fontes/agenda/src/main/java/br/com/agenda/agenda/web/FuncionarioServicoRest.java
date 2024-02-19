@@ -13,51 +13,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.agenda.agenda.entities.FuncionarioEntity;
-import br.com.agenda.agenda.services.interfaces.IFuncionarioService;
+import br.com.agenda.agenda.entities.FuncionarioServicoEntity;
+import br.com.agenda.agenda.services.interfaces.IFuncionarioServicoService;
 import jakarta.transaction.Transactional;
 
 @RestController
-@RequestMapping("/funcionario")
-public class FuncionarioRest {
-
+@RequestMapping("/funcionarioServico")
+public class FuncionarioServicoRest {
+    
     @Autowired
-    private IFuncionarioService funcionarioService;
+    private IFuncionarioServicoService funcionarioServicoService;
 
-     @GetMapping("/listar")
-    public ResponseEntity<List<FuncionarioEntity>> findAll() {
+    @GetMapping("/listar")
+    public ResponseEntity<List<FuncionarioServicoEntity>> findAll() {
 
-        return ResponseEntity.ok().body(funcionarioService.findAll());
+        return ResponseEntity.ok().body(funcionarioServicoService.findAll());
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<FuncionarioEntity> findById(@PathVariable Integer id) {
-        FuncionarioEntity result = funcionarioService.findById(id);
+    public ResponseEntity<FuncionarioServicoEntity> findById(@PathVariable Integer id) {
+        FuncionarioServicoEntity result = funcionarioServicoService.findById(id);
         return ResponseEntity.ok().body(result);
     }
 
     @Transactional
     @PostMapping("/adicionar")
-    public ResponseEntity<FuncionarioEntity> add(@RequestBody FuncionarioEntity funcionarioEntity) {
+    public ResponseEntity<FuncionarioServicoEntity> add(@RequestBody FuncionarioServicoEntity funcionario) {
 
-        funcionarioEntity = funcionarioService.add(funcionarioEntity);
-        return ResponseEntity.ok().body(funcionarioEntity);
+        funcionario= funcionarioServicoService.add(funcionario);
+        return ResponseEntity.ok().body(funcionario);
     }
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
     public ResponseEntity<Void> deleteFuncionario(@PathVariable int id) {
 
-        funcionarioService.delete(id);
+        funcionarioServicoService.delete(id);
         return ResponseEntity.ok().build();
     }
 
-    @Transactional
+     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<FuncionarioEntity> updateFuncionario(@RequestBody FuncionarioEntity funcionario) {
+    public ResponseEntity<FuncionarioServicoEntity> updateFuncionarioServico(@RequestBody FuncionarioServicoEntity funcionario) {
 
-        FuncionarioEntity funcionarioAtualizado = funcionarioService.add(funcionario);
+        FuncionarioServicoEntity funcionarioAtualizado = funcionarioServicoService.add(funcionario);
         return ResponseEntity.ok().body(funcionarioAtualizado);
     }
-    
 }

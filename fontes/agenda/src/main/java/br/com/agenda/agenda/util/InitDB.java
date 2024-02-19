@@ -17,6 +17,7 @@ import br.com.agenda.agenda.entities.DisponibilidadeEntity;
 import br.com.agenda.agenda.entities.EmpresaEntity;
 import br.com.agenda.agenda.entities.FuncionarioEntity;
 import br.com.agenda.agenda.entities.FuncionarioMenuEntity;
+import br.com.agenda.agenda.entities.FuncionarioServicoEntity;
 import br.com.agenda.agenda.entities.HorarioBloqueadoEntity;
 import br.com.agenda.agenda.entities.MenuEntity;
 import br.com.agenda.agenda.entities.ServicoEntity;
@@ -29,6 +30,7 @@ import br.com.agenda.agenda.repositories.DisponibilidadeRepository;
 import br.com.agenda.agenda.repositories.EmpresaRepository;
 import br.com.agenda.agenda.repositories.FuncionarioMenuRepository;
 import br.com.agenda.agenda.repositories.FuncionarioRepository;
+import br.com.agenda.agenda.repositories.FuncionarioServicoRepository;
 import br.com.agenda.agenda.repositories.HorarioBloqueadoRepository;
 import br.com.agenda.agenda.repositories.MenuRepository;
 import br.com.agenda.agenda.repositories.ServicoRepository;
@@ -66,17 +68,20 @@ public class InitDB implements CommandLineRunner {
 
     @Autowired
     private MenuRepository menuRepository;
-    
+
     @Autowired
     private ServicoRepository servicoRepository;
 
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
+    @Autowired
+    private FuncionarioServicoRepository funcionarioServicoRepository;
+
     public void inserirRegistros() {
         System.out.println("Inserindo registros");
 
-        /*Usuario */
+        /* Usuario */
 
         UsuarioEntity usuarioEntity1 = new UsuarioEntity();
         usuarioEntity1.setUsuarioId(0);
@@ -109,7 +114,7 @@ public class InitDB implements CommandLineRunner {
         usuarioEntity2.setTelefone("(12) 98255-6589");
         usuarioEntity2.setUf("RJ");
 
-        /*Empresa */
+        /* Empresa */
 
         EmpresaEntity empresa = new EmpresaEntity();
 
@@ -123,14 +128,13 @@ public class InitDB implements CommandLineRunner {
         empresa.setNumero("991");
         empresa.setUf("SP");
         empresa.setCep("12333-600");
-        
+
         usuarioEntity1 = usuarioRepository.save(usuarioEntity1);
         usuarioRepository.save(usuarioEntity2);
         empresa.setUsuarioEntity(usuarioEntity1);
         empresaRepository.save(empresa);
 
-
-        /*Cliente */
+        /* Cliente */
 
         ClienteEntity clienteEntity1 = new ClienteEntity();
 
@@ -141,7 +145,7 @@ public class InitDB implements CommandLineRunner {
             clienteEntity1.setData_nascimento(new java.sql.Date(dataNascimento.getTime()));
         } catch (ParseException e) {
             e.printStackTrace();
-            
+
         }
         clienteEntity1.setDescricao("o céu é azul");
         clienteEntity1.setEmail("cliente@gmail.com");
@@ -152,16 +156,15 @@ public class InitDB implements CommandLineRunner {
 
         clienteRepository.save(clienteEntity1);
 
-        /*Data Bloqueada */
+        /* Data Bloqueada */
 
         DataBloqueadaEntity dataBloqueadaEntity1 = new DataBloqueadaEntity();
 
-       
         try {
             java.util.Date data = dateFormat.parse("11-10-2002");
             dataBloqueadaEntity1.setData(new java.sql.Date(data.getTime()));
         } catch (ParseException e) {
-            e.printStackTrace();   
+            e.printStackTrace();
         }
         dataBloqueadaEntity1.setFuncionario_id(0);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
@@ -169,11 +172,11 @@ public class InitDB implements CommandLineRunner {
         dataBloqueadaEntity1.setHorario_inicio(horarioInicio);
         LocalTime horarioFinal = LocalTime.parse("10:50:22", formatter);
         dataBloqueadaEntity1.setHorario_final(horarioFinal);
-        dataBloqueadaEntity1.setDataBloqueadaId(1);     
-        
+        dataBloqueadaEntity1.setDataBloqueadaId(1);
+
         dataBloqueadaRepository.save(dataBloqueadaEntity1);
 
-        /*Dia Semana */
+        /* Dia Semana */
 
         DiaSemanaEntity segunda = new DiaSemanaEntity();
         DiaSemanaEntity terca = new DiaSemanaEntity();
@@ -206,7 +209,7 @@ public class InitDB implements CommandLineRunner {
         diaSemanaRepository.save(sabado);
         diaSemanaRepository.save(domingo);
 
-        /*Disponibilidade */
+        /* Disponibilidade */
 
         DisponibilidadeEntity disponibilidade = new DisponibilidadeEntity();
 
@@ -220,7 +223,7 @@ public class InitDB implements CommandLineRunner {
 
         disponibilidadeRepository.save(disponibilidade);
 
-        /*Funcionario */
+        /* Funcionario */
 
         FuncionarioEntity funcionario = new FuncionarioEntity();
 
@@ -232,26 +235,47 @@ public class InitDB implements CommandLineRunner {
         funcionario.setNome("Funcionario 1");
         funcionario.setSenha("Senha123");
         funcionario.setTelefone("(12) 99965-1425");
-        
+
         funcionarioRepository.save(funcionario);
 
-        /*Funcionario */
+        /* Funcionario Menu */
 
         FuncionarioMenuEntity funcionarioMenu = new FuncionarioMenuEntity();
 
-        funcionarioMenu.setFuncionario_id(1);
+        funcionarioMenu.setFuncionarioId(1);
         funcionarioMenu.setFuncionarioMenuId(0);
-        funcionarioMenu.setMenu_id(1);
+        funcionarioMenu.setMenuId(1);
 
         funcionarioMenuRepository.save(funcionarioMenu);
-        
-        /*Funcionario */
+
+        /* Servico */
+
+        ServicoEntity servico = new ServicoEntity();
+
+        servico.setServicoId(0);
+        servico.setNome("Modelo Y");
+        servico.setPreco(150.00);
+        LocalTime timeService = LocalTime.parse("01:00:00", formatter);
+        servico.setTempo(timeService);
+
+
+        /* Funcionario Servico */
+
+        FuncionarioServicoEntity funcionarioServico = new FuncionarioServicoEntity();
+
+        funcionarioServico.setFuncionarioServicoId(0);
+        funcionarioServico.setFuncionarioId(1);
+
+        funcionarioServico = funcionarioServicoRepository.save(funcionarioServico);
+        servico.setFuncionarioServico(funcionarioServico);
+        servicoRepository.save(servico);
+        /* HorarioBloqueado */
 
         HorarioBloqueadoEntity horarioBloqueado = new HorarioBloqueadoEntity();
 
         horarioBloqueado.setDia_semana_id(1);
         horarioBloqueado.setFuncionario_id(1);
-        LocalTime horarioBloqInicio = LocalTime.parse("12:00:00",formatter);
+        LocalTime horarioBloqInicio = LocalTime.parse("12:00:00", formatter);
         horarioBloqueado.setHorario_inicio(horarioBloqInicio);
         LocalTime horarioBloqFinal = LocalTime.parse("13:00:00", formatter);
         horarioBloqueado.setHorario_final(horarioBloqFinal);
@@ -267,21 +291,11 @@ public class InitDB implements CommandLineRunner {
         menu.setNome("Teste");
 
         menuRepository.save(menu);
-        /* Servico */
 
-        ServicoEntity servico = new ServicoEntity();
-
-        servico.setServicoId(0);
-        servico.setNome("Modelo Y");
-        servico.setPreco(150.00);
-        LocalTime timeService = LocalTime.parse("01:00:00", formatter);
-        servico.setTempo(timeService);
-        
-        
         /* Agendamento */
 
         AgendamentoEntity agendamento = new AgendamentoEntity();
-        
+
         agendamento.setAtivo(true);
         agendamento.setClienteId(1);
         try {
@@ -295,13 +309,11 @@ public class InitDB implements CommandLineRunner {
         LocalTime agendaHora = LocalTime.parse("15:00:00", formatter);
         agendamento.setHorario(agendaHora);
         agendamento.setAgendamentoId(0);
-        
 
         agendamento = agendamentoRepository.save(agendamento);
-        servico.setAgendamentoEntity(agendamento);
+        servico.setAgendamento(agendamento);
         servicoRepository.save(servico);
     }
-
 
     @Override
     public void run(String... args) throws Exception {

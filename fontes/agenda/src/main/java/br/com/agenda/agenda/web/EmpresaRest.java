@@ -46,7 +46,7 @@ public class EmpresaRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteEmpresa(@PathVariable int id) {
 
         empresaService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class EmpresaRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<EmpresaEntity> updateUsuario(@RequestBody EmpresaEntity empresa) {
+    public ResponseEntity<EmpresaEntity> updateEmpresa(@RequestBody EmpresaEntity empresa) {
 
         EmpresaEntity empresaAtualizada = empresaService.add(empresa);
         return ResponseEntity.ok().body(empresaAtualizada);

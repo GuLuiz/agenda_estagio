@@ -46,7 +46,7 @@ public class DisponibilidadeRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteDisponibilidade(@PathVariable int id) {
 
         disponibilidadeService.delete(id);
         return ResponseEntity.ok().build();

@@ -46,7 +46,7 @@ public class DiaSemanaRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteDiaSemana(@PathVariable int id) {
 
         diaSemanaService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class DiaSemanaRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<DiaSemanaEntity> updateUsuario(@RequestBody DiaSemanaEntity dia) {
+    public ResponseEntity<DiaSemanaEntity> updateDiaSemana(@RequestBody DiaSemanaEntity dia) {
 
         DiaSemanaEntity diaSemanaAtualizado = diaSemanaService.add(dia);
         return ResponseEntity.ok().body(diaSemanaAtualizado);

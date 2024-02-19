@@ -46,7 +46,7 @@ public class AgendamentoRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteAgendamento(@PathVariable int id) {
 
         agendamentoService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class AgendamentoRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<AgendamentoEntity> updateUsuario(@RequestBody AgendamentoEntity agenda) {
+    public ResponseEntity<AgendamentoEntity> updateAgendamento(@RequestBody AgendamentoEntity agenda) {
 
         AgendamentoEntity agendaAtualizado = agendamentoService.add(agenda);
         return ResponseEntity.ok().body(agendaAtualizado);

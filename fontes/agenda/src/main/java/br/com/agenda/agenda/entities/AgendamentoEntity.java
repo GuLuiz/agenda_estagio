@@ -31,6 +31,6 @@ public class AgendamentoEntity implements Serializable {
     private LocalTime horario; 
     private Boolean ativo;
 
-    @OneToMany(mappedBy = "agendamentoEntity")
+    @OneToMany(mappedBy = "agendamento")
     private List<ServicoEntity> servicoId = new ArrayList<ServicoEntity>();
 }

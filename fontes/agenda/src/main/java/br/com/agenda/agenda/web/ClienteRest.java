@@ -46,7 +46,7 @@ public class ClienteRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteCliente(@PathVariable int id) {
 
         clienteService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class ClienteRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<ClienteEntity> updateUsuario(@RequestBody ClienteEntity data) {
+    public ResponseEntity<ClienteEntity> updateCliente(@RequestBody ClienteEntity data) {
 
         ClienteEntity usuarioAtualizado = clienteService.add(data);
         return ResponseEntity.ok().body(usuarioAtualizado);

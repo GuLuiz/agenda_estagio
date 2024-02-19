@@ -2,7 +2,7 @@ package br.com.agenda.agenda.services.interfaces;
 
 import java.util.List;
 
-import br.com.agenda.agenda.DTO.RequestUsuario;
+import br.com.agenda.agenda.dto.RequestUsuario;
 import br.com.agenda.agenda.entities.UsuarioEntity;
 
 public interface IUsuarioService {

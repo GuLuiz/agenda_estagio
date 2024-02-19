@@ -33,6 +33,10 @@ public class ServicoEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "agendamento_id")
     @JsonIgnore
-    private AgendamentoEntity agendamentoEntity;
+    private AgendamentoEntity agendamento;
 
+    @ManyToOne
+    @JoinColumn(name = "funcionario_servico_id")
+    @JsonIgnore
+    private FuncionarioServicoEntity funcionarioServico;
 }
