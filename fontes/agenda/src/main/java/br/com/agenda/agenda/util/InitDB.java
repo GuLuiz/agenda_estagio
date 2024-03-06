@@ -271,6 +271,7 @@ public class InitDB implements CommandLineRunner {
         funcionario.setFuncionarioServico(funcionarioServico);
         servicoRepository.save(servico);
         funcionarioRepository.save(funcionario);
+
         /* HorarioBloqueado */
 
         HorarioBloqueadoEntity horarioBloqueado = new HorarioBloqueadoEntity();
@@ -306,7 +307,6 @@ public class InitDB implements CommandLineRunner {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        agendamento.setEmpresaId(1);
         agendamento.setFuncionarioId(1);
         LocalTime agendaHora = LocalTime.parse("15:00:00", formatter);
         agendamento.setHorario(agendaHora);
@@ -314,7 +314,9 @@ public class InitDB implements CommandLineRunner {
 
         agendamento = agendamentoRepository.save(agendamento);
         servico.setAgendamento(agendamento);
+        empresa.setAgendamento(agendamento);
         servicoRepository.save(servico);
+        empresaRepository.save(empresa);
     }
 
     @Override

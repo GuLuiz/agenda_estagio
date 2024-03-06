@@ -26,8 +26,8 @@ public class FuncionarioServicoEntity implements Serializable{
     
     
     @OneToMany(mappedBy = "funcionarioServico")
-    private List<ServicoEntity> servicoId = new ArrayList<ServicoEntity>();
+    private List<ServicoEntity> servico = new ArrayList<ServicoEntity>();
 
     @OneToOne(mappedBy = "funcionarioServico")
-    private FuncionarioEntity funcionarioEntity;
+    private FuncionarioEntity funcionario;
 }
