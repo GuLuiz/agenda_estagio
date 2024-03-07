@@ -24,9 +24,6 @@ public class AgendamentoEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer agendamentoId;
-    
-    private Integer clienteId;
-    private Integer funcionarioId;
     private Date data;
     private LocalTime horario; 
     private Boolean ativo;
@@ -35,5 +32,11 @@ public class AgendamentoEntity implements Serializable {
     private List<ServicoEntity> servicoId = new ArrayList<ServicoEntity>();
 
     @OneToOne(mappedBy = "agendamento")
+    private ClienteEntity cliente;
+
+    @OneToOne(mappedBy = "agendamento")
     private EmpresaEntity empresa;
+
+    @OneToOne(mappedBy = "agendamento")
+    private FuncionarioEntity funcionario;
 }

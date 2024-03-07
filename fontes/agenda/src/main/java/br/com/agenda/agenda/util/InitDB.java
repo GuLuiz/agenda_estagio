@@ -136,25 +136,25 @@ public class InitDB implements CommandLineRunner {
 
         /* Cliente */
 
-        ClienteEntity clienteEntity1 = new ClienteEntity();
+        ClienteEntity cliente = new ClienteEntity();
 
-        clienteEntity1.setAtivo(true);
+        cliente.setAtivo(true);
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         try {
             java.util.Date dataNascimento = dateFormat.parse("11-10-2002");
-            clienteEntity1.setData_nascimento(new java.sql.Date(dataNascimento.getTime()));
+            cliente.setData_nascimento(new java.sql.Date(dataNascimento.getTime()));
         } catch (ParseException e) {
             e.printStackTrace();
 
         }
-        clienteEntity1.setDescricao("o céu é azul");
-        clienteEntity1.setEmail("cliente@gmail.com");
-        clienteEntity1.setClienteId(0);
-        clienteEntity1.setNome("Cliente Teste");
-        clienteEntity1.setSenha("12345678");
-        clienteEntity1.setTelefone("(12) 98199-9998");
+        cliente.setDescricao("o céu é azul");
+        cliente.setEmail("cliente@gmail.com");
+        cliente.setClienteId(0);
+        cliente.setNome("Cliente Teste");
+        cliente.setSenha("12345678");
+        cliente.setTelefone("(12) 98199-9998");
 
-        clienteRepository.save(clienteEntity1);
+        clienteRepository.save(cliente);
 
         /* Data Bloqueada */
 
@@ -300,14 +300,12 @@ public class InitDB implements CommandLineRunner {
         AgendamentoEntity agendamento = new AgendamentoEntity();
 
         agendamento.setAtivo(true);
-        agendamento.setClienteId(1);
         try {
             java.util.Date agendaData = dateFormat.parse("11-10-2002");
             agendamento.setData(new java.sql.Date(agendaData.getTime()));
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        agendamento.setFuncionarioId(1);
         LocalTime agendaHora = LocalTime.parse("15:00:00", formatter);
         agendamento.setHorario(agendaHora);
         agendamento.setAgendamentoId(0);
@@ -315,6 +313,10 @@ public class InitDB implements CommandLineRunner {
         agendamento = agendamentoRepository.save(agendamento);
         servico.setAgendamento(agendamento);
         empresa.setAgendamento(agendamento);
+        cliente.setAgendamento(agendamento);
+        funcionario.setAgendamento(agendamento);
+        funcionarioRepository.save(funcionario);
+        clienteRepository.save(cliente);
         servicoRepository.save(servico);
         empresaRepository.save(empresa);
     }

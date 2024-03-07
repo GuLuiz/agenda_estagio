@@ -45,4 +45,9 @@ public class FuncionarioEntity implements Serializable {
     @JoinColumn(name = "funcionario_servico_id")
     @JsonIgnore
     private FuncionarioServicoEntity funcionarioServico;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "agendamento_id")
+    @JsonIgnore
+    private AgendamentoEntity agendamento;
 }
