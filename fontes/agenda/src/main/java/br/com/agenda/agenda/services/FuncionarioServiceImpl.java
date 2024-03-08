@@ -49,7 +49,6 @@ public class FuncionarioServiceImpl implements IFuncionarioService {
 
         funcionario.setAtivo(funcionario.getAtivo());
         funcionario.setEmail(funcionario.getEmail());
-        funcionario.setEmpresa_id(funcionario.getEmpresa_id());
         funcionario.setFoto_id(funcionario.getFoto_id());
         funcionario.setFuncionarioId(funcionario.getFuncionarioId());
         funcionario.setNome(funcionario.getNome());

@@ -48,7 +48,6 @@ public class HorarioBloqueadoServiceImpl implements IHorarioBloqueadoService {
         horarioBloq = repository.findById(horarioBloq.getHorarioBloqueadoId()).orElse(null);
 
         horarioBloq.setDia_semana_id(horarioBloq.getDia_semana_id());
-        horarioBloq.setFuncionario_id(horarioBloq.getFuncionario_id());
         horarioBloq.setHorario_final(horarioBloq.getHorario_final());
         horarioBloq.setHorario_inicio(horarioBloq.getHorario_inicio());
         horarioBloq.setHorarioBloqueadoId(horarioBloq.getHorarioBloqueadoId());

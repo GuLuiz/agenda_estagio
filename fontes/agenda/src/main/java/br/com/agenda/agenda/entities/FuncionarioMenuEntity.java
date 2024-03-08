@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -19,6 +20,9 @@ public class FuncionarioMenuEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer funcionarioMenuId;
     
-    private Integer menuId;
-    private Integer funcionarioId;
+    @OneToOne(mappedBy = "funcionarioMenu")
+    private MenuEntity menu;
+
+    @OneToOne(mappedBy = "funcionarioMenu")
+    private FuncionarioEntity funcionario;
 }

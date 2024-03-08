@@ -47,9 +47,7 @@ public class FuncionarioMenuServiceImpl implements IFuncionarioMenuService {
 
          funcMenu = repository.findById(funcMenu.getFuncionarioMenuId()).orElse(null);
 
-        funcMenu.setFuncionarioId(funcMenu.getFuncionarioId());
         funcMenu.setFuncionarioMenuId(funcMenu.getFuncionarioMenuId());
-        funcMenu.setMenuId(funcMenu.getMenuId());
 
         funcMenu = repository.save(funcMenu);
         return funcMenu;

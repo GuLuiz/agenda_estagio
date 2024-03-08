@@ -48,8 +48,6 @@ public class DisponibilidadeServiceImpl implements IDisponibilidadeService {
         disp = repository.findById(disp.getDisponibilidadeId()).orElse(null);
 
         disp.setDisponibilidadeId(disp.getDisponibilidadeId());
-        disp.setDia_semana_id(disp.getDia_semana_id());
-        disp.setFuncionario_id(disp.getFuncionario_id());
         disp.setHorario_inicio(disp.getHorario_inicio());
         disp.setHorario_final(disp.getHorario_final());
         return disp;

@@ -1,6 +1,9 @@
 package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -12,6 +15,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -37,7 +43,6 @@ public class FuncionarioEntity implements Serializable {
     @Length(min = 6, max = 30, message = "A senha deve conter entre 6 a 30 caracteres")
     private String senha;
     private Integer foto_id;
-    private Integer empresa_id;
     private Boolean ativo;
     
     
@@ -50,4 +55,22 @@ public class FuncionarioEntity implements Serializable {
     @JoinColumn(name = "agendamento_id")
     @JsonIgnore
     private AgendamentoEntity agendamento;
+
+    @ManyToOne
+    @JoinColumn(name = "empresa_id")
+    @JsonIgnore
+    private EmpresaEntity empresa;
+
+    @ManyToOne
+    @JoinColumn(name = "disponibilidade_id")
+    @JsonIgnore
+    private DisponibilidadeEntity disponibilidade;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "funcionario_menu_id")
+    @JsonIgnore
+    private FuncionarioMenuEntity funcionarioMenu;
+    
+    @OneToMany(mappedBy = "funcionario")
+    private List<HorarioBloqueadoEntity> horarioBloqueado = new ArrayList<HorarioBloqueadoEntity>();
 }

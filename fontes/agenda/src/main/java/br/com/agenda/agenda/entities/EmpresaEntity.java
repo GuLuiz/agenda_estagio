@@ -1,6 +1,8 @@
 package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -13,6 +15,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -54,5 +57,8 @@ public class EmpresaEntity implements Serializable {
     @JoinColumn(name = "agendamento_id")
     @JsonIgnore
     private AgendamentoEntity agendamento;
+
+    @OneToMany(mappedBy = "empresa")
+    private List<FuncionarioEntity> funcionario = new ArrayList<FuncionarioEntity>();
 
 }
