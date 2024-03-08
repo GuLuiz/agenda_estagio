@@ -37,4 +37,9 @@ public class DiaSemanaEntity implements Serializable {
     @JsonIgnore
     private Set<DisponibilidadeEntity> disponibilidade;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "Dia_Hora_Bloqueados", joinColumns = @JoinColumn(name = "dia_semana_id"), 
+    inverseJoinColumns = @JoinColumn(name= "horario_bloqueado_id") )
+    @JsonIgnore
+    private Set<HorarioBloqueadoEntity> horarioBloqueado;
 }

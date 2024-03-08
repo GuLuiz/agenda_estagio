@@ -81,12 +81,12 @@ public class InitDB implements CommandLineRunner {
     public void inserirRegistros() {
         System.out.println("Inserindo registros");
 
-        /* HorarioBloqueado */
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        /* HorarioBloqueado */
 
         HorarioBloqueadoEntity horarioBloqueado = new HorarioBloqueadoEntity();
 
-        horarioBloqueado.setDia_semana_id(1);
         LocalTime horarioBloqInicio = LocalTime.parse("12:00:00", formatter);
         horarioBloqueado.setHorario_inicio(horarioBloqInicio);
         LocalTime horarioBloqFinal = LocalTime.parse("13:00:00", formatter);
@@ -94,6 +94,26 @@ public class InitDB implements CommandLineRunner {
         horarioBloqueado.setHorarioBloqueadoId(0);
 
         horarioBloqueadoRepository.save(horarioBloqueado);
+
+        /* Data Bloqueada */
+
+        DataBloqueadaEntity dataBloqueadaEntity1 = new DataBloqueadaEntity();
+
+        try {
+            java.util.Date data = dateFormat.parse("11-10-2002");
+            dataBloqueadaEntity1.setData(new java.sql.Date(data.getTime()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        LocalTime horarioInicio = LocalTime.parse("14:50:22", formatter);
+        dataBloqueadaEntity1.setHorario_inicio(horarioInicio);
+        LocalTime horarioFinal = LocalTime.parse("10:50:22", formatter);
+        dataBloqueadaEntity1.setHorario_final(horarioFinal);
+        dataBloqueadaEntity1.setDataBloqueadaId(1);
+
+        dataBloqueadaRepository.save(dataBloqueadaEntity1);
+
         /* Usuario */
 
         UsuarioEntity usuarioEntity1 = new UsuarioEntity();
@@ -141,7 +161,9 @@ public class InitDB implements CommandLineRunner {
 
         funcionario = funcionarioRepository.save(funcionario);
         horarioBloqueado.setFuncionario(funcionario);
+        dataBloqueadaEntity1.setFuncionario(funcionario);
         horarioBloqueadoRepository.save(horarioBloqueado);
+        dataBloqueadaRepository.save(dataBloqueadaEntity1);
         funcionarioRepository.save(funcionario);
 
         /* Empresa */
@@ -172,7 +194,6 @@ public class InitDB implements CommandLineRunner {
         ClienteEntity cliente = new ClienteEntity();
 
         cliente.setAtivo(true);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         try {
             java.util.Date dataNascimento = dateFormat.parse("11-10-2002");
             cliente.setData_nascimento(new java.sql.Date(dataNascimento.getTime()));
@@ -189,25 +210,6 @@ public class InitDB implements CommandLineRunner {
 
         clienteRepository.save(cliente);
 
-        /* Data Bloqueada */
-
-        DataBloqueadaEntity dataBloqueadaEntity1 = new DataBloqueadaEntity();
-
-        try {
-            java.util.Date data = dateFormat.parse("11-10-2002");
-            dataBloqueadaEntity1.setData(new java.sql.Date(data.getTime()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        dataBloqueadaEntity1.setFuncionario_id(0);
-
-        LocalTime horarioInicio = LocalTime.parse("14:50:22", formatter);
-        dataBloqueadaEntity1.setHorario_inicio(horarioInicio);
-        LocalTime horarioFinal = LocalTime.parse("10:50:22", formatter);
-        dataBloqueadaEntity1.setHorario_final(horarioFinal);
-        dataBloqueadaEntity1.setDataBloqueadaId(1);
-
-        dataBloqueadaRepository.save(dataBloqueadaEntity1);
 
         /* Dia Semana */
 

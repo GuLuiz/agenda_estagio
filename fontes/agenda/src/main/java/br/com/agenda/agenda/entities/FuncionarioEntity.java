@@ -73,4 +73,7 @@ public class FuncionarioEntity implements Serializable {
     
     @OneToMany(mappedBy = "funcionario")
     private List<HorarioBloqueadoEntity> horarioBloqueado = new ArrayList<HorarioBloqueadoEntity>();
+
+    @OneToMany(mappedBy = "funcionario")
+    private List<DataBloqueadaEntity> dataBloqueada = new ArrayList<DataBloqueadaEntity>();
 }
