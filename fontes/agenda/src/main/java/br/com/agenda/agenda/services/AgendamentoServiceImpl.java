@@ -43,17 +43,14 @@ public class AgendamentoServiceImpl implements IAgendamentoService {
     }
 
     @Override
-    public AgendamentoEntity updateUsuario(@RequestBody AgendamentoEntity agenda) {
+    public AgendamentoEntity updateAgendamento(@RequestBody AgendamentoEntity agenda) {
 
-        agenda = repository.findById(agenda.getId()).orElse(null);
+        agenda = repository.findById(agenda.getAgendamentoId()).orElse(null);
 
         agenda.setAtivo(agenda.getAtivo());
-        agenda.setClienteId(agenda.getClienteId());
         agenda.setData(agenda.getData());
-        agenda.setEmpresaId(agenda.getEmpresaId());
-        agenda.setFuncionarioId(agenda.getFuncionarioId());
         agenda.setHorario(agenda.getHorario());
-        agenda.setId(agenda.getId());
+        agenda.setAgendamentoId(agenda.getAgendamentoId());
         agenda.setServicoId(agenda.getServicoId());
         
         agenda = repository.save(agenda);

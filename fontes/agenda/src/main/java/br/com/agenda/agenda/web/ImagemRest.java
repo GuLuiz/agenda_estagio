@@ -31,9 +31,9 @@ public class ImagemRest {
     }
 
     @GetMapping(value = "/{id}")
-    public ImagemEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<ImagemEntity> findById(@PathVariable Integer id) {
         ImagemEntity result = imagemService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional
@@ -46,7 +46,7 @@ public class ImagemRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteImagem(@PathVariable int id) {
 
         imagemService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class ImagemRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<ImagemEntity> updateUsuario(@RequestBody ImagemEntity imagem) {
+    public ResponseEntity<ImagemEntity> updateImagem(@RequestBody ImagemEntity imagem) {
 
         ImagemEntity imagemAtualizado = imagemService.add(imagem);
         return ResponseEntity.ok().body(imagemAtualizado);

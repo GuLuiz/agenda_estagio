@@ -31,9 +31,9 @@ public class DataBloqueadaRest {
     }
 
      @GetMapping(value = "/{id}")
-    public DataBloqueadaEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<DataBloqueadaEntity> findById(@PathVariable Integer id) {
         DataBloqueadaEntity result = dataBloqueadaService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional
@@ -46,7 +46,7 @@ public class DataBloqueadaRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteDataBloqueada(@PathVariable int id) {
 
         dataBloqueadaService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class DataBloqueadaRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<DataBloqueadaEntity> updateUsuario(@RequestBody DataBloqueadaEntity data) {
+    public ResponseEntity<DataBloqueadaEntity> updateDataBloqueada(@RequestBody DataBloqueadaEntity data) {
 
         DataBloqueadaEntity usuarioAtualizado = dataBloqueadaService.add(data);
         return ResponseEntity.ok().body(usuarioAtualizado);

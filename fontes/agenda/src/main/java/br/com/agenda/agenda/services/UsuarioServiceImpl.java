@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import br.com.agenda.agenda.DTO.RequestUsuario;
+import br.com.agenda.agenda.dto.RequestUsuario;
 import br.com.agenda.agenda.entities.UsuarioEntity;
 import br.com.agenda.agenda.repositories.UsuarioRepository;
 import br.com.agenda.agenda.services.interfaces.IUsuarioService;
@@ -35,8 +35,10 @@ public class UsuarioServiceImpl implements IUsuarioService {
     @Override
     public UsuarioEntity findById(Integer id) {
 
-        return usuarioRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
+        UsuarioEntity usuarioEntity = usuarioRepository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("User not found with id " + id));
+        
+        return usuarioEntity;
     }
 
     @Override
@@ -49,7 +51,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
         UsuarioEntity usuario = usuarioRepository.findById(data.id()).orElse(null);
 
-        usuario.setId(data.id());
+        usuario.setUsuarioId(data.id());
         usuario.setNome(data.nome());
         usuario.setAtivo(data.ativo());
         usuario.setBairro(data.bairro());

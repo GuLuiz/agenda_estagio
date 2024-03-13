@@ -42,11 +42,11 @@ public class DiaSemanaServiceImpl implements IDiaSemanaService {
     }
 
     @Override
-    public DiaSemanaEntity updateUsuario(@RequestBody DiaSemanaEntity dia) {
+    public DiaSemanaEntity updateDiaSemana(@RequestBody DiaSemanaEntity dia) {
 
-        dia = repository.findById(dia.getId()).orElse(null);
+        dia = repository.findById(dia.getDiaSemanaId()).orElse(null);
 
-        dia.setId(dia.getId());
+        dia.setDiaSemanaId(dia.getDiaSemanaId());
         dia.setName(dia.getName());
         
         return dia;

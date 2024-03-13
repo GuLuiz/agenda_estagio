@@ -43,15 +43,13 @@ public class HorarioBloqueadoServiceImpl implements IHorarioBloqueadoService {
     }
 
     @Override
-    public HorarioBloqueadoEntity updateUsuario(@RequestBody HorarioBloqueadoEntity horarioBloq) {
+    public HorarioBloqueadoEntity updateHorarioBloqueado(@RequestBody HorarioBloqueadoEntity horarioBloq) {
 
-        horarioBloq = repository.findById(horarioBloq.getId()).orElse(null);
+        horarioBloq = repository.findById(horarioBloq.getHorarioBloqueadoId()).orElse(null);
 
-        horarioBloq.setDia_semana_id(horarioBloq.getDia_semana_id());
-        horarioBloq.setFuncionario_id(horarioBloq.getFuncionario_id());
         horarioBloq.setHorario_final(horarioBloq.getHorario_final());
         horarioBloq.setHorario_inicio(horarioBloq.getHorario_inicio());
-        horarioBloq.setId(horarioBloq.getId());
+        horarioBloq.setHorarioBloqueadoId(horarioBloq.getHorarioBloqueadoId());
 
         horarioBloq = repository.save(horarioBloq);
         return horarioBloq;

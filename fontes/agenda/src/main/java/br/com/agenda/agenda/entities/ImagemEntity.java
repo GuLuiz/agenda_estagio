@@ -19,6 +19,7 @@ public class ImagemEntity implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer imagemId;
     private ImageIcon imagem;
+
 }

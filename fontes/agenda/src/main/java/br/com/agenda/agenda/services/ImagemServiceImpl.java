@@ -43,11 +43,11 @@ public class ImagemServiceImpl implements IImagemService {
     }
 
     @Override
-    public ImagemEntity updateUsuario(@RequestBody ImagemEntity img) {
+    public ImagemEntity updateImagem(@RequestBody ImagemEntity img) {
 
-        img = repository.findById(img.getId()).orElse(null);
+        img = repository.findById(img.getImagemId()).orElse(null);
 
-        img.setId(img.getId());
+        img.setImagemId(img.getImagemId());
         img.setImagem(img.getImagem());
 
         img = repository.save(img);

@@ -31,9 +31,9 @@ public class FuncionarioMenuRest {
     }
 
     @GetMapping(value = "/{id}")
-    public FuncionarioMenuEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<FuncionarioMenuEntity> findById(@PathVariable Integer id) {
         FuncionarioMenuEntity result = funcionarioMenuService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional
@@ -46,7 +46,7 @@ public class FuncionarioMenuRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteFuncionarioMenu(@PathVariable int id) {
 
         funcionarioMenuService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class FuncionarioMenuRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<FuncionarioMenuEntity> updateUsuario(@RequestBody FuncionarioMenuEntity funcionarioMenu) {
+    public ResponseEntity<FuncionarioMenuEntity> updateFuncionarioMenu(@RequestBody FuncionarioMenuEntity funcionarioMenu) {
 
         FuncionarioMenuEntity funcionarioMenuAtualizado = funcionarioMenuService.add(funcionarioMenu);
         return ResponseEntity.ok().body(funcionarioMenuAtualizado);

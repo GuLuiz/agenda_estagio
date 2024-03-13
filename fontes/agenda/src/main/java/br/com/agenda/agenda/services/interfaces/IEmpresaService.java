@@ -14,6 +14,6 @@ public interface IEmpresaService {
 
     void delete(Integer id);
 
-    EmpresaEntity updateUsuario(EmpresaEntity empresa);
+    EmpresaEntity updateEmpresa(EmpresaEntity empresa);
 
 }

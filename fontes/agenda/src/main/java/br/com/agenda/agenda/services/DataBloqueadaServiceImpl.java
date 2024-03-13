@@ -42,15 +42,14 @@ public class DataBloqueadaServiceImpl implements IDataBloqueadaService {
     }
 
     @Override
-    public DataBloqueadaEntity updateUsuario(@RequestBody DataBloqueadaEntity data) {
+    public DataBloqueadaEntity updateDataBloqueada(@RequestBody DataBloqueadaEntity data) {
 
-        data = repository.findById(data.getId()).orElse(null);
+        data = repository.findById(data.getDataBloqueadaId()).orElse(null);
 
         data.setData(data.getData());
-        data.setFuncionario_id(data.getFuncionario_id());
         data.setHorario_final(data.getHorario_final());
         data.setHorario_inicio(data.getHorario_inicio());
-        data.setId(data.getId());
+        data.setDataBloqueadaId(data.getDataBloqueadaId());
         data = repository.save(data);
         return data;
     }

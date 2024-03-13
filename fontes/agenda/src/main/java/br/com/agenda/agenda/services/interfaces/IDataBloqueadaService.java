@@ -14,6 +14,6 @@ public interface IDataBloqueadaService {
 
     void delete(Integer id);
 
-    DataBloqueadaEntity updateUsuario(DataBloqueadaEntity data);
+    DataBloqueadaEntity updateDataBloqueada(DataBloqueadaEntity data);
 
 }

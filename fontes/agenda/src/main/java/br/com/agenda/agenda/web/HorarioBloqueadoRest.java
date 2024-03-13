@@ -32,9 +32,9 @@ public class HorarioBloqueadoRest {
     }
 
     @GetMapping(value = "/{id}")
-    public HorarioBloqueadoEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<HorarioBloqueadoEntity> findById(@PathVariable Integer id) {
         HorarioBloqueadoEntity result = horarioBloqueadoService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional
@@ -47,7 +47,7 @@ public class HorarioBloqueadoRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteHorarioBloqueado(@PathVariable int id) {
 
         horarioBloqueadoService.delete(id);
         return ResponseEntity.ok().build();
@@ -55,7 +55,7 @@ public class HorarioBloqueadoRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<HorarioBloqueadoEntity> updateUsuario(@RequestBody HorarioBloqueadoEntity horarioBloqueado) {
+    public ResponseEntity<HorarioBloqueadoEntity> updateHorarioBloqueado(@RequestBody HorarioBloqueadoEntity horarioBloqueado) {
 
         HorarioBloqueadoEntity horarioBloqueadoAtualizado = horarioBloqueadoService.add(horarioBloqueado);
         return ResponseEntity.ok().body(horarioBloqueadoAtualizado);

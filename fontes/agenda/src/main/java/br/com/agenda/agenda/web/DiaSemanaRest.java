@@ -31,9 +31,9 @@ public class DiaSemanaRest {
     }
 
     @GetMapping(value = "/{id}")
-    public DiaSemanaEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<DiaSemanaEntity> findById(@PathVariable Integer id) {
         DiaSemanaEntity result = diaSemanaService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional
@@ -46,7 +46,7 @@ public class DiaSemanaRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteDiaSemana(@PathVariable int id) {
 
         diaSemanaService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class DiaSemanaRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<DiaSemanaEntity> updateUsuario(@RequestBody DiaSemanaEntity dia) {
+    public ResponseEntity<DiaSemanaEntity> updateDiaSemana(@RequestBody DiaSemanaEntity dia) {
 
         DiaSemanaEntity diaSemanaAtualizado = diaSemanaService.add(dia);
         return ResponseEntity.ok().body(diaSemanaAtualizado);

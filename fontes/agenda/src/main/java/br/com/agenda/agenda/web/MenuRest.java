@@ -31,9 +31,9 @@ public class MenuRest {
     }
     
     @GetMapping(value = "/{id}")
-    public MenuEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<MenuEntity> findById(@PathVariable Integer id) {
         MenuEntity result = menuService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional
@@ -46,7 +46,7 @@ public class MenuRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteMenu(@PathVariable int id) {
 
         menuService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class MenuRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<MenuEntity> updateUsuario(@RequestBody MenuEntity menu) {
+    public ResponseEntity<MenuEntity> updateMenu(@RequestBody MenuEntity menu) {
 
         MenuEntity menuAtualizado = menuService.add(menu);
         return ResponseEntity.ok().body(menuAtualizado);

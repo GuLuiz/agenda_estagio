@@ -3,12 +3,15 @@ package br.com.agenda.agenda.entities;
 import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -20,17 +23,20 @@ public class AgendamentoEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    
-    @Column(name = "CLIENTE_ID")
-    private Integer clienteId;
-    @Column(name = "EMPRESA_ID")
-    private Integer empresaId;
-    @Column(name = "SERVICO_ID")
-    private Integer servicoId;
-    @Column(name = "FUNCIONARIO_ID")
-    private Integer funcionarioId;
+    private Integer agendamentoId;
     private Date data;
     private LocalTime horario; 
     private Boolean ativo;
+    
+    @OneToMany(mappedBy = "agendamento")
+    private List<ServicoEntity> servicoId = new ArrayList<ServicoEntity>();
+
+    @OneToOne(mappedBy = "agendamento")
+    private ClienteEntity cliente;
+
+    @OneToOne(mappedBy = "agendamento")
+    private EmpresaEntity empresa;
+
+    @OneToOne(mappedBy = "agendamento")
+    private FuncionarioEntity funcionario;
 }

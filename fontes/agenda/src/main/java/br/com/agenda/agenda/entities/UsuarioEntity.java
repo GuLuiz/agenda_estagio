@@ -1,6 +1,8 @@
 package br.com.agenda.agenda.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -8,10 +10,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import jakarta.validation.constraints.Email;
 
 @NoArgsConstructor
 @Entity
@@ -23,7 +26,7 @@ public class UsuarioEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer usuarioId;
     @Length(max = 100, message = "Limite de 100 caracteres excedido")
     private String nome;
     
@@ -51,4 +54,7 @@ public class UsuarioEntity implements Serializable {
     private String telefone;
     private Boolean ativo;
    
+    @OneToMany(mappedBy = "usuarioEntity")
+    private List<EmpresaEntity> empresas = new ArrayList<EmpresaEntity>();
+
 }

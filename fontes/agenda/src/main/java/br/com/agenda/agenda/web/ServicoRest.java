@@ -31,9 +31,9 @@ public class ServicoRest {
     }
 
     @GetMapping(value = "/{id}")
-    public ServicoEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<ServicoEntity> findById(@PathVariable Integer id) {
         ServicoEntity result = servicoService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional
@@ -46,7 +46,7 @@ public class ServicoRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteServico(@PathVariable int id) {
 
         servicoService.delete(id);
         return ResponseEntity.ok().build();
@@ -54,7 +54,7 @@ public class ServicoRest {
 
     @Transactional
     @PutMapping("/update")
-    public ResponseEntity<ServicoEntity> updateUsuario(@RequestBody ServicoEntity servico) {
+    public ResponseEntity<ServicoEntity> updateServico(@RequestBody ServicoEntity servico) {
 
         ServicoEntity servicoAtualizado = servicoService.add(servico);
         return ResponseEntity.ok().body(servicoAtualizado);

@@ -43,14 +43,14 @@ public class ClienteServiceImpl implements IClienteService {
     }
 
     @Override
-    public ClienteEntity updateUsuario(@RequestBody ClienteEntity cliente) {
+    public ClienteEntity updateCliente(@RequestBody ClienteEntity cliente) {
 
-        cliente = repository.findById(cliente.getId()).orElse(null);
+        cliente = repository.findById(cliente.getClienteId()).orElse(null);
 
         cliente.setData_nascimento(cliente.getData_nascimento());
         cliente.setDescricao(cliente.getDescricao());
         cliente.setEmail(cliente.getEmail());
-        cliente.setId(cliente.getId());
+        cliente.setClienteId(cliente.getClienteId());
         cliente.setNome(cliente.getNome());
         cliente.setSenha(cliente.getSenha());
         cliente.setTelefone(cliente.getTelefone());

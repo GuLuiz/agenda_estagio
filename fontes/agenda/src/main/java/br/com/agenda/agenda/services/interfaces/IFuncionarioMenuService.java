@@ -14,6 +14,6 @@ public interface IFuncionarioMenuService {
 
     void delete(Integer id);
 
-    FuncionarioMenuEntity updateUsuario(FuncionarioMenuEntity funcMenu);
+    FuncionarioMenuEntity updateFuncionarioMenu(FuncionarioMenuEntity funcMenu);
 
 }

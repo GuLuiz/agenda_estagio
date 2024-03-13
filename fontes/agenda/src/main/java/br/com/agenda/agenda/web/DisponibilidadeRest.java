@@ -31,9 +31,9 @@ public class DisponibilidadeRest {
     }
 
     @GetMapping(value = "/{id}")
-    public DisponibilidadeEntity findById(@PathVariable Integer id) {
+    public ResponseEntity<DisponibilidadeEntity> findById(@PathVariable Integer id) {
         DisponibilidadeEntity result = disponibilidadeService.findById(id);
-        return result;
+        return ResponseEntity.ok().body(result);
     }
 
     @Transactional
@@ -46,7 +46,7 @@ public class DisponibilidadeRest {
 
     @Transactional
     @DeleteMapping(value = "/delete/{id}")
-    public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
+    public ResponseEntity<Void> deleteDisponibilidade(@PathVariable int id) {
 
         disponibilidadeService.delete(id);
         return ResponseEntity.ok().build();

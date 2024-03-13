@@ -43,11 +43,11 @@ public class MenuServiceImpl implements IMenuService {
     }
 
     @Override
-    public MenuEntity updateUsuario(@RequestBody MenuEntity menu) {
+    public MenuEntity updateMenu(@RequestBody MenuEntity menu) {
 
-        menu = repository.findById(menu.getId()).orElse(null);
+        menu = repository.findById(menu.getMenuId()).orElse(null);
 
-        menu.setId(menu.getId());
+        menu.setMenuId(menu.getMenuId());
         menu.setNome(menu.getNome());
 
         menu = repository.save(menu);
