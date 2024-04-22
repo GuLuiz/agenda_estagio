@@ -25,7 +25,7 @@ public class UsuarioRest {
     private IUsuarioService usuarioService;
 
 
-    @GetMapping("/listar")
+    @GetMapping("")
     public ResponseEntity<List<UsuarioEntity>> findAll() {
 
         return ResponseEntity.ok().body(usuarioService.findAll());
@@ -38,7 +38,7 @@ public class UsuarioRest {
     }
 
     @Transactional
-    @PostMapping("/adicionar")
+    @PostMapping("")
     public ResponseEntity<UsuarioEntity> add(@RequestBody UsuarioEntity usuarioEntity) {
 
         usuarioEntity = usuarioService.add(usuarioEntity);
@@ -47,7 +47,7 @@ public class UsuarioRest {
     }
 
     @Transactional
-    @DeleteMapping(value = "/delete/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity<Void> deleteUsuario(@PathVariable int id) {
 
         usuarioService.delete(id);
@@ -55,8 +55,8 @@ public class UsuarioRest {
     }
 
     @Transactional
-    @PutMapping("/update")
-    public ResponseEntity<UsuarioEntity> updateUsuario(@RequestBody UsuarioEntity data) {
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<UsuarioEntity> updateUsuario(@PathVariable int id, @RequestBody UsuarioEntity data) {
 
         UsuarioEntity usuarioAtualizado = usuarioService.add(data);
         return ResponseEntity.ok().body(usuarioAtualizado);
