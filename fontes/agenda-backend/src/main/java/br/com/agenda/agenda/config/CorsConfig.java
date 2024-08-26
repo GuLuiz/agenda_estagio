@@ -13,7 +13,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**") // Aplique a configuração de CORS para os endpoints da API
-                        .allowedOrigins("http://localhost:4200") // Permita solicitações de qualquer origem (substitua '*' pelo domínio apropriado)
+                        .allowedOrigins("http://192.168.15.6:4200") // Permita solicitações de qualquer origem (substitua '*' pelo domínio apropriado)
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Permita todos os métodos HTTP
                         .allowedHeaders("*"); // Permita todos os cabeçalhos
                         

@@ -3,11 +3,14 @@ import { UsuarioService } from '../../../services/usuario.service';
 import { UsuarioInterface } from '../../../interfaces/usuario.interface';
 import { CommonModule } from '@angular/common';
 import {MatTableModule} from '@angular/material/table'; 
+import { MatButtonModule } from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-listar',
+  selector: 'listar',
   standalone: true,
-  imports: [CommonModule, MatTableModule],
+  imports: [CommonModule, MatTableModule, MatButtonModule,MatIconModule],
   templateUrl: './listar.component.html',
   styleUrl: './listar.component.scss'
 })
@@ -16,7 +19,7 @@ export class ListarComponent {
   colunas: string [] = ['Id','Nome', 'Email'] ;
   usuarios: any = []; 
 
-  constructor(private usuarioService : UsuarioService){}
+  constructor(private usuarioService : UsuarioService, private router: Router  ){}
 
   ngOnInit(){
     console.log("passei aqui");
@@ -29,5 +32,9 @@ export class ListarComponent {
         this.usuarios = res;
       }
     )
+  }
+
+  adicionarNovo(){
+    this.router.navigate(['usuarioNovo']);
   }
 }

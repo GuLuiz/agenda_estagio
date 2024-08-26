@@ -10,11 +10,17 @@ export class UsuarioService {
 
   URL_USUARIO: string = defaults.environment.appUrl + "usuario";
 
-    headers = new HttpHeaders()
+  headers = new HttpHeaders()
     .set('content-type', 'application/json')
-  constructor(private httpClient : HttpClient) { }
+  constructor(private httpClient: HttpClient) { }
 
-  lista(): Observable<Array<Object>> { 
-    return this.httpClient.get<Array<Object>>(this.URL_USUARIO, {"headers":this.headers});
+  lista(): Observable<Array<Object>> {
+    return this.httpClient.get<Array<Object>>(this.URL_USUARIO, { "headers": this.headers });
+  }
+
+  sendData(nome: string, email: string, senha: string, logradouro: string, numero: string, bairro: string, complemento: string, cidade: string, uf: string, cep: string, telefone: string) : Observable<UsuarioInterface> {
+
+    const data = { nome, email, senha, logradouro, numero, bairro, complemento, cidade, uf, cep, telefone }
+    return this.httpClient.post<UsuarioInterface>(this.URL_USUARIO, data);
   }
 }

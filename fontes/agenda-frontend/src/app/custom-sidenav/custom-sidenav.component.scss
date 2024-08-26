@@ -1,17 +1,3 @@
-.content{
-    padding: 24px;
-}
-
-mat-toolbar{
-    position: relative;
-    z-index: 5;
-}
-mat-sidenav-container{
-    height: calc( 100vh - 64px);
-}
-.mat-sidenav{
-    background-color: #454C38;
-}
 .sidenav-header{
     padding-top: 24px;
     text-align: center;
@@ -37,7 +23,4 @@ mat-sidenav-container{
 .hide-header-text{
     opacity: 0;
     height: 0px;
-}
-home-component{
-    background-color: #E4E4E4;
 }

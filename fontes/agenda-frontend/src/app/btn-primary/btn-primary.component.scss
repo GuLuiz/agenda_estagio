@@ -1,0 +1,23 @@
+.btn {
+    border: none;
+    border-radius: 20px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 20px;
+    font-weight: bold;
+  
+    &:disabled {
+      opacity: 0.6;
+    }
+  
+    &.salvar {
+      color: white;
+      background-color: #004A27;
+    }
+  
+    &.cancelar {
+      color: black;
+      background-color: white;
+    }
+  }
+  

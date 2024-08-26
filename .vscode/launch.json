@@ -16,7 +16,7 @@
             "request": "launch",
             "mainClass": "br.com.agenda.agenda.AgendaApplication",
             "projectName": "agenda",
-            "args": "--spring.profiles.active=dev"
+            "args": "--spring.profiles.active=dsv"
         }
     ]
 }

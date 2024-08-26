@@ -1,0 +1,16 @@
+<div class="sidenav-header">
+    <img [width]="profilePicSize" [height]="profilePicSize" src="/assets/pessoa.png">
+    <div class="header-text" [class.hide-header-text]="sidenavCollapsed()">
+        <h2>Nome social</h2>
+        <p>Gustavo Luiz</p>
+    </div>
+</div>
+
+<mat-nav-list>
+    <a mat-list-item *ngFor="let item of menuItems()" [routerLink]="item.route">
+        <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+        <span matListItemTitle *ngIf="!sidenavCollapsed()">
+            {{item.label}}
+        </span>
+    </a>
+</mat-nav-list>
