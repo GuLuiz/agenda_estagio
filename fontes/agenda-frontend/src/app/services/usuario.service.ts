@@ -23,4 +23,8 @@ export class UsuarioService {
     const data = { nome, email, senha, logradouro, numero, bairro, complemento, cidade, uf, cep, telefone }
     return this.httpClient.post<UsuarioInterface>(this.URL_USUARIO, data);
   }
+
+  salvar(usuario: any): Observable<any> {
+    return this.httpClient.post(`${this.URL_USUARIO}`, usuario);
+  }
 }

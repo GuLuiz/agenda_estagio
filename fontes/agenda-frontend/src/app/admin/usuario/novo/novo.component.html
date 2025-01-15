@@ -71,11 +71,9 @@
             <label for="complement">Complemento</label>
             <input type="text" id="complemento" name="complement" formControlName="complemento" />
         </div>
+        <div class="button-group">
+            <button (click)="onSubmit()" type="inferior">Salvar</button>
+            <button (click)="onSubmit()" type="inferior">Cancelar</button>
+        </div>
     </form>
-    <section>
-    <btn-primary btn-text="Salvar" variant="salvar" (submit)="onSubmit()">
-    </btn-primary>
-    <btn-primary btn-text="Cancelar" variant="cancelar">
-    </btn-primary>
-    </section>
 </div>

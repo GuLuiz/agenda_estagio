@@ -1,61 +1,68 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidatorFn } from '@angular/forms';
-import { BtnPrimaryComponent } from '../../../btn-primary/btn-primary.component';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario.service';
-
-export function cepValidator(): ValidatorFn {
-  return (control: AbstractControl): { [key: string]: any } | null => {
-    const cep = control.value;
-    const validCepPattern = /^[0-9]{5}-?[0-9]{3}$/;
-    return validCepPattern.test(cep) ? null : { 'invalidCep': { value: cep } };
-  };
-}
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-usuario-novo',
+  selector: 'usuario-novo',
   standalone: true,
-  imports: [ReactiveFormsModule, BtnPrimaryComponent],
+  imports: [ReactiveFormsModule],
   providers: [UsuarioService],
   templateUrl: './novo.component.html',
-  styleUrls: ['./novo.component.scss']
+  styleUrls: ['./novo.component.scss'],
 })
 export class UsuarioNovoComponent {
   usuarioCadastro!: FormGroup;
 
-  constructor(private service: UsuarioService) {
+  constructor(private usuarioService: UsuarioService,
+    private router: Router
+  ) {
+    
     this.usuarioCadastro = new FormGroup({
       nome: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       senha: new FormControl('', [Validators.required]),
-      telefone: new FormControl('', [Validators.required]),
-      cep: new FormControl('', [Validators.required, cepValidator()]),
-      uf: new FormControl('', [Validators.required]),
       logradouro: new FormControl('', [Validators.required]),
       numero: new FormControl('', [Validators.required]),
-      cidade: new FormControl('', [Validators.required]),
       bairro: new FormControl('', [Validators.required]),
       complemento: new FormControl('', []),
+      cidade: new FormControl('', [Validators.required]),
+      uf: new FormControl('', [Validators.required]),
+      cep: new FormControl('', [Validators.required]),
+      telefone: new FormControl('', [Validators.required]),
     });
   }
 
   onSubmit() {
-    console.log(this.usuarioCadastro.value);
     if (this.usuarioCadastro.valid) {
-      this.service.sendData(
-        this.usuarioCadastro.value.nome,
-        this.usuarioCadastro.value.email,
-        this.usuarioCadastro.value.senha,
-        this.usuarioCadastro.value.telefone,
-        this.usuarioCadastro.value.cep,
-        this.usuarioCadastro.value.uf,
-        this.usuarioCadastro.value.logradouro,
-        this.usuarioCadastro.value.numero,
-        this.usuarioCadastro.value.cidade,
-        this.usuarioCadastro.value.bairro,
-        this.usuarioCadastro.value.complemento
-      ).subscribe({
-        next: () => { this.usuarioCadastro.reset(); }
-      })
+      const formData = this.usuarioCadastro.value;
+
+      this.usuarioService
+        .sendData(
+          formData.nome,
+          formData.email,
+          formData.senha,
+          formData.logradouro,
+          formData.numero,
+          formData.bairro,
+          formData.complemento,
+          formData.cidade,
+          formData.uf,
+          formData.cep,
+          formData.telefone
+        )
+        .subscribe({
+          next: () => {
+            console.log('Usuário cadastrado com sucesso!');
+            this.router.navigate(['/listar']);
+            this.usuarioCadastro.reset();
+          },
+          error: (err) => {
+            console.error('Erro ao cadastrar usuário:', err);
+          },
+        });
+    } else {
+      console.log('Formulário inválido!');
     }
   }
 }

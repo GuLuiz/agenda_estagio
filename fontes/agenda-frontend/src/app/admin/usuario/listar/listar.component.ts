@@ -33,7 +33,6 @@ export class ListarComponent {
       }
     )
   }
-
   adicionarNovo(){
     this.router.navigate(['usuarioNovo']);
   }
