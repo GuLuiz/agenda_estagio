@@ -65,4 +65,7 @@ export class UsuarioNovoComponent {
       console.log('Formulário inválido!');
     }
   }
+  cancelar(): void {
+    this.router.navigate(['/listar']); // Redireciona para a lista de usuários
+  }
 }

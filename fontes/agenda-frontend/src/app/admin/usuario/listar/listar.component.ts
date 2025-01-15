@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class ListarComponent {
 
-  colunas: string [] = ['Id','Nome', 'Email'] ;
+  colunas: string [] = ['Id','Nome', 'Email', 'Acoes'] ;
   usuarios: any = []; 
 
   constructor(private usuarioService : UsuarioService, private router: Router  ){}

@@ -47,35 +47,34 @@ h1 {
   border-radius: 50%;
 }
 
-/* Botão dentro do placeholder da imagem */
 .image-placeholder button {
-  position: absolute; /* Posição ajustada */
+  position: absolute; 
   padding: 10px;
   margin-top: 160px;
   border-radius: 20px;
-  border: none; /* Remove borda adicional */
+  border: none;
   background-color: #BFC6B2;
   color: #3E3E3E;
   cursor: pointer;
 }
 
-/* Seção de detalhes do usuário */
+
 .user-details {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Espaçamento entre os itens */
+  gap: 10px; 
 }
 
-/* Estilo dos labels */
+
 .user-details label {
-  flex-basis: 100%; /* Cada label ocupa uma linha */
+  flex-basis: 100%; 
   color: white;
 }
 
-/* Estilo dos inputs e selects */
+
 .user-details input,
 .user-details select {
-  flex-basis: calc(50% - 10px); /* Dois por linha com espaçamento */
+  flex-basis: calc(50% - 10px); 
   padding: 10px;
   border: 1px solid #BFC6B2;
   border-radius: 10px;

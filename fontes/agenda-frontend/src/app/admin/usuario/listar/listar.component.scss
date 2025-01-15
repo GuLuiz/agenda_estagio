@@ -1,15 +1,56 @@
 table {
-    width: 100%;
-  }
-  
-  button {
-    padding: 10px 20px;
-    position: absolute;
-    border-radius: 20px;
-    border: none;
-    background-color: #BFC6B2;
-    cursor: pointer;
-    right: 20px;
-    margin: 10px;
-  }
-  
+  width: 100%;
+}
+
+button {
+  padding: 10px 20px;
+  position: absolute;
+  border-radius: 20px;
+  border: none;
+  background-color: #BFC6B2;
+  cursor: pointer;
+  right: 20px;
+  margin: 10px;
+}
+
+
+table.mat-table th,
+table.mat-table td {
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px 16px;
+  position: relative;
+}
+
+table.mat-table .mat-column-Acoes {
+  width: 80px;
+  text-align: center;
+}
+
+.mat-icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e0e0e0;
+
+}
+
+
+.mat-icon-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.iconEdit {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
