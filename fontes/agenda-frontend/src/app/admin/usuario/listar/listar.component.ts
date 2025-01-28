@@ -5,19 +5,19 @@ import { CommonModule } from '@angular/common';
 import {MatTableModule} from '@angular/material/table'; 
 import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'listar',
   standalone: true,
-  imports: [CommonModule, MatTableModule, MatButtonModule,MatIconModule],
+  imports: [CommonModule, MatTableModule, MatButtonModule,MatIconModule, RouterModule, RouterLink ],
   templateUrl: './listar.component.html',
   styleUrl: './listar.component.scss'
 })
 export class ListarComponent {
 
   colunas: string [] = ['Id','Nome', 'Email', 'Acoes'] ;
-  usuarios: any = []; 
+  usuarios: any = [];
 
   constructor(private usuarioService : UsuarioService, private router: Router  ){}
 
@@ -35,5 +35,8 @@ export class ListarComponent {
   }
   adicionarNovo(){
     this.router.navigate(['usuarioNovo']);
+  }
+  editarUsuario(){
+    this.router.navigate(['usuarioEditar']);
   }
 }

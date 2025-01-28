@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.agenda.agenda.DTO.RequestUsuario;
 import br.com.agenda.agenda.entities.UsuarioEntity;
 import br.com.agenda.agenda.services.interfaces.IUsuarioService;
 import jakarta.transaction.Transactional;
@@ -58,7 +60,7 @@ public class UsuarioRest {
     @PutMapping(value = "/{id}")
     public ResponseEntity<UsuarioEntity> updateUsuario(@PathVariable int id, @RequestBody UsuarioEntity data) {
 
-        UsuarioEntity usuarioAtualizado = usuarioService.add(data);
+        UsuarioEntity usuarioAtualizado = usuarioService.updateUsuario(data);
         return ResponseEntity.ok().body(usuarioAtualizado);
 
     }

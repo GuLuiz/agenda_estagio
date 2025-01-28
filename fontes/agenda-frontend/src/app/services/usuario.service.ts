@@ -27,4 +27,30 @@ export class UsuarioService {
   salvar(usuario: any): Observable<any> {
     return this.httpClient.post(`${this.URL_USUARIO}`, usuario);
   }
+
+  selectById(id : string): Observable<UsuarioInterface>{
+    return this.httpClient.get<UsuarioInterface>(this.URL_USUARIO + "/" + id, {"headers": this.headers});
+  }
+
+  sendDataById(
+    id: string,
+    nome: string,
+    email: string,
+    senha: string,
+    logradouro: string,
+    numero: string,
+    bairro: string,
+    complemento: string,
+    cidade: string,
+    uf: string,
+    cep: string,
+    telefone: string
+  ): Observable<UsuarioInterface> {
+    const data = { id, nome, email, senha, logradouro, numero, bairro, complemento, cidade, uf, cep, telefone };
+    return this.httpClient.put<UsuarioInterface>(`${this.URL_USUARIO}/${id}`, data);
+  }
+  
+  deleteById(id : string): Observable<any>{
+    return this.httpClient.delete(`${this.URL_USUARIO}/${id}`, {headers: this.headers});
+  }
 }

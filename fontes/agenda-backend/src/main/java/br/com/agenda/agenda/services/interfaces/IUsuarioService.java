@@ -15,6 +15,6 @@ public interface IUsuarioService {
 
     void delete(Integer id);
 
-    UsuarioEntity updateUsuario(RequestUsuario data);
+    UsuarioEntity updateUsuario(UsuarioEntity data);
 
 }

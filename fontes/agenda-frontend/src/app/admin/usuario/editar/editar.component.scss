@@ -1,0 +1,124 @@
+
+.cadastro-usuario {
+    background-color: #454C38;
+    padding: 20px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 100px;
+  }
+  
+  h1 {
+    text-align: left;
+    color: black;
+    padding-bottom: 6px;
+  }
+  
+  .image-section {
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    height: 150px;
+    padding: 20px 50px;
+    border-radius: 20px;
+    background-color: #84936B;
+    margin: 0 50px 0 20px; 
+  }
+  
+  /* Placeholder da imagem */
+  .image-placeholder {
+    background-color: #616161;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .image-placeholder img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  .image-placeholder button {
+    position: absolute; 
+    padding: 10px;
+    margin-top: 160px;
+    border-radius: 20px;
+    border: none;
+    background-color: #BFC6B2;
+    color: #3E3E3E;
+    cursor: pointer;
+  }
+  
+  
+  .user-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; 
+  }
+  
+  
+  .user-details label {
+    flex-basis: 100%; 
+    color: white;
+  }
+  
+  
+  .user-details input,
+  .user-details select {
+    flex-basis: calc(50% - 10px); 
+    padding: 10px;
+    border: 1px solid #BFC6B2;
+    border-radius: 10px;
+    background-color: #84936B;
+    color: white; 
+  }
+  
+  .user-details input.full-width,
+  .user-details select.full-width {
+    flex-basis: 100%;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .form-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative; 
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: flex-end; /* Alinha os botões à direita; use 'center' para centralizar */
+    gap: 10px; /* Espaçamento entre os botões */
+    margin-top: 20px; /* Adiciona espaçamento acima do grupo de botões */
+}
+  
+  button[type="button"] {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #BFC6B2;
+    color: #3E3E3E;
+    cursor: pointer;
+  }
+
+  button[type="button"]:hover {
+    background-color: #A8B098; 
+    color: #fff;
+}
+  
+  

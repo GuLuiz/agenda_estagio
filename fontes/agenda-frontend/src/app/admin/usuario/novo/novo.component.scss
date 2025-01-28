@@ -1,4 +1,4 @@
-/* Estilo principal do container de cadastro */
+
 .cadastro-usuario {
   background-color: #454C38;
   padding: 20px;
@@ -9,14 +9,12 @@
   margin-bottom: 100px;
 }
 
-/* Título da página */
 h1 {
   text-align: left;
   color: black;
   padding-bottom: 6px;
 }
 
-/* Seção de imagem */
 .image-section {
   display: flex;
   justify-content: center;
@@ -25,7 +23,7 @@ h1 {
   padding: 20px 50px;
   border-radius: 20px;
   background-color: #84936B;
-  margin: 0 50px 0 20px; /* Ajusta margens laterais */
+  margin: 0 50px 0 20px; 
 }
 
 /* Placeholder da imagem */
@@ -40,7 +38,6 @@ h1 {
   margin-top: 10px;
 }
 
-/* Estilo da imagem no placeholder */
 .image-placeholder img {
   width: 80px;
   height: 80px;
@@ -78,17 +75,15 @@ h1 {
   padding: 10px;
   border: 1px solid #BFC6B2;
   border-radius: 10px;
-  background-color: #84936B; /* Cor de fundo */
-  color: white; /* Cor do texto */
+  background-color: #84936B;
+  color: white; 
 }
 
-/* Inputs e selects que ocupam toda a largura */
 .user-details input.full-width,
 .user-details select.full-width {
   flex-basis: 100%;
 }
 
-/* Ações do formulário */
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -96,25 +91,23 @@ h1 {
   margin-top: 20px;
 }
 
-/* Container principal do formulário */
 .form-container {
   display: flex;
   align-items: flex-start;
   gap: 20px;
   padding: 20px;
   border-radius: 10px;
-  position: relative; /* Necessário para o posicionamento relativo dos botões */
+  position: relative; 
 }
 
 .button-group {
-  position: absolute;
-  bottom: 20px; /* Alinha ao fundo do formulário */
-  right: 20px; /* Alinha ao canto esquerdo */
-  display: flex; /* Cria um layout flexível para os botões */
-  gap: 10px; /* Espaço entre os botões */
+  display: flex;
+  justify-content: flex-end; /* Alinha os botões à direita; use 'center' para centralizar */
+  gap: 10px; /* Espaçamento entre os botões */
+  margin-top: 20px; /* Adiciona espaçamento acima do grupo de botões */
 }
 
-button[type="inferior"] {
+button[type="button"] {
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
@@ -122,3 +115,9 @@ button[type="inferior"] {
   color: #3E3E3E;
   cursor: pointer;
 }
+
+button[type="button"]:hover {
+  background-color: #A8B098; 
+  color: #fff;
+}
+

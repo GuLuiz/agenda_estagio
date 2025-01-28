@@ -45,25 +45,25 @@ public class UsuarioServiceImpl implements IUsuarioService {
     }
 
     @Override
-    public UsuarioEntity updateUsuario(@RequestBody @Valid RequestUsuario data) {
+    public UsuarioEntity updateUsuario(@RequestBody UsuarioEntity data) {
 
-        UsuarioEntity usuario = usuarioRepository.findById(data.id()).orElse(null);
+        UsuarioEntity usuario = usuarioRepository.findById(data.getId()).orElse(null); 
 
-        usuario.setId(data.id());
-        usuario.setNome(data.nome());
-        usuario.setAtivo(data.ativo());
-        usuario.setBairro(data.bairro());
-        usuario.setCep(data.cep());
-        usuario.setCidade(data.cidade());
-        usuario.setComplemento(data.complemento());
-        usuario.setEmail(data.email());
-        usuario.setLogradouro(data.logradouro());
-        usuario.setNumero(data.numero());
-        usuario.setSenha(data.senha());
-        usuario.setTelefone(data.telefone());
-        usuario.setUf(data.uf());
+        usuario.setId(data.getId());
+        usuario.setNome(data.getNome());
+        usuario.setAtivo(data.getAtivo());
+        usuario.setBairro(data.getBairro());
+        usuario.setCep(data.getCep());
+        usuario.setCidade(data.getCidade());
+        usuario.setComplemento(data.getComplemento());
+        usuario.setEmail(data.getEmail());
+        usuario.setLogradouro(data.getLogradouro());
+        usuario.setNumero(data.getNumero());
+        usuario.setSenha(data.getSenha());
+        usuario.setTelefone(data.getTelefone());
+        usuario.setUf(data.getUf());
 
-        UsuarioEntity usuarioAtualizado = usuarioRepository.save(usuario);
-        return usuarioAtualizado;
+        data = usuarioRepository.save(usuario);
+        return data;
     }
 }
