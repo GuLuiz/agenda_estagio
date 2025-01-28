@@ -4,11 +4,12 @@ import { ActivatedRoute, Router, RouterLink, RouterModule } from '@angular/route
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable, switchMap } from 'rxjs';
 import { UsuarioInterface } from '../../../interfaces/usuario.interface';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'usuarioEditar',
   standalone: true,
-  imports: [RouterLink, RouterModule, ReactiveFormsModule],
+  imports: [RouterLink, RouterModule, ReactiveFormsModule, MatIconModule],
   templateUrl: './editar.component.html',
   styleUrl: './editar.component.scss'
 })
@@ -99,6 +100,20 @@ export class EditarComponent {
   }
   cancelar(): void {
     this.router.navigate(['/listar']);
+  }
+
+  deletarUsuario(): void{
+    if(confirm('Tem certeza que deseja excluir este usuário?')){
+      this.service.deleteById(this.selectedId).subscribe({
+        next: ()=>{
+          console.log('Usuário excluído com sucesso!');
+          this.router.navigate(['listar']);
+        },
+        error:(err) =>{
+          console.error('Erro ao excluir o usuário: ', err)
+        }
+      })
+    }
   }
 
 }

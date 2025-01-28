@@ -6,12 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import br.com.agenda.agenda.DTO.RequestUsuario;
 import br.com.agenda.agenda.entities.UsuarioEntity;
 import br.com.agenda.agenda.repositories.UsuarioRepository;
 import br.com.agenda.agenda.services.interfaces.IUsuarioService;
 import jakarta.persistence.EntityNotFoundException;
-import jakarta.validation.Valid;
 
 @Service
 public class UsuarioServiceImpl implements IUsuarioService {

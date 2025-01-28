@@ -102,11 +102,17 @@
   
   .button-group {
     display: flex;
-    justify-content: flex-end; /* Alinha os botões à direita; use 'center' para centralizar */
-    gap: 10px; /* Espaçamento entre os botões */
-    margin-top: 20px; /* Adiciona espaçamento acima do grupo de botões */
-}
+    justify-content: space-between;
+    position: relative;
+    margin-top: 20px;
+  }
   
+  .right-buttons {
+    display: flex;
+    gap: 10px;
+    align-self: flex-end;
+  }
+
   button[type="button"] {
     padding: 10px 20px;
     border-radius: 20px;
@@ -117,8 +123,22 @@
   }
 
   button[type="button"]:hover {
-    background-color: #A8B098; 
-    color: #fff;
-}
+    background-color: #A8B098;
+    color: white;
+  }
+
+  .delete-button {
+      align-self: flex-start; /* Mantém o botão "Delete" à esquerda */
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: none;
+      background-color: #e4605e;
+      color: white;
+      cursor: pointer;
+  }
+
+  .delete-button:hover {
+      background-color: #d9534f;
+  }
   
   

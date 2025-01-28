@@ -21,7 +21,7 @@ export class UsuarioNovoComponent {
     
     this.usuarioCadastro = new FormGroup({
       nome: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required]),
       senha: new FormControl('', [Validators.required]),
       logradouro: new FormControl('', [Validators.required]),
       numero: new FormControl('', [Validators.required]),
@@ -64,6 +64,7 @@ export class UsuarioNovoComponent {
         });
     } else {
       console.log('Formulário inválido!');
+      console.log(this.usuarioCadastro)
     }
   }
   cancelar(): void {

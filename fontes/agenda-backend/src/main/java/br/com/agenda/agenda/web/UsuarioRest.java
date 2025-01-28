@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.agenda.agenda.DTO.RequestUsuario;
 import br.com.agenda.agenda.entities.UsuarioEntity;
 import br.com.agenda.agenda.services.interfaces.IUsuarioService;
 import jakarta.transaction.Transactional;

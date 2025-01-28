@@ -72,7 +72,12 @@
 
 
     <div class="button-group">
-        <button (click)="cancelar()" type="button">Cancelar</button>
-        <button (click)="onSubmit()" type="button">Salvar</button>
+        <button class="delete-button" (click)="deletarUsuario()">
+            <mat-icon>delete</mat-icon>
+        </button>
+        <div class="right-buttons">
+            <button (click)="cancelar()" type="button">Cancelar</button>
+            <button (click)="onSubmit()" type="button">Salvar</button>
+        </div>
     </div>
 </div>
